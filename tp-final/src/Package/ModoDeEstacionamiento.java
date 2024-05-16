@@ -1,5 +1,6 @@
 package Package;
 
-public class ModoDeEstacionamiento {
+public abstract class ModoDeEstacionamiento {
 
+	
 }
