@@ -1,4 +1,4 @@
-package Package;
+package app;
 
 public class EstacionamientoPorCompraPuntual extends ModoDeEstacionamiento {
 	
