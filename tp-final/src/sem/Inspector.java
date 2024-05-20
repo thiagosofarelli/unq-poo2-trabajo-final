@@ -19,5 +19,9 @@ public class Inspector {
 	        sem.generarInfraccion(patente, this);
 	    }
 	}
+	
+	public Zona getZona() {
+		return this.zona;
+	}
 
 }
