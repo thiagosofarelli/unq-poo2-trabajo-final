@@ -6,8 +6,10 @@ import app.asistencia.Desactivada;
 import app.modo.Automatico;
 import app.modo.Manual;
 import app.modo.ModoApp;
+import app.sensor.MovementSensor;
 
-public class AppEstacionamiento extends App {
+public class AppEstacionamiento extends App implements MovementSensor {
+	
 	private AsistenciaAlUsuario asistencia;
 	private int numero;
 	private String patente;
@@ -53,6 +55,18 @@ public class AppEstacionamiento extends App {
 	}
 	
 	public void registrarFinEstacionamiento() {
+		
+	}
+
+	@Override
+	public void driving() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void walking() {
+		// TODO Auto-generated method stub
 		
 	}
 }

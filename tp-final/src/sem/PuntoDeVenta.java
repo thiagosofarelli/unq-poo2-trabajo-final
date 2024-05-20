@@ -1,4 +1,4 @@
-package app;
+package sem;
 
 public class PuntoDeVenta {
 
