@@ -1,5 +1,5 @@
 package registroDeCompra;
 
-public class RegistroCargaDeCredito {
+public class RegistroCargaDeCredito extends RegistroDeCompra {
 
 }
