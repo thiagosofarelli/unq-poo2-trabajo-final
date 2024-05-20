@@ -12,8 +12,8 @@ public class PuntoDeVenta {
 		this.nroRegistro = 0;
 	}
 	
-	public void cargarCredito(App app, float monto) {
-		this.sem.cargarCredito(this, app, monto, nroRegistro);
+	public void registrarCargaDeCredito(App app, float monto) {
+		this.sem.registrarCargaDeCredito(this, app, monto, nroRegistro);
 		this.nroRegistro++;
 	}
 

@@ -1,6 +1,6 @@
 package entidad;
 
-import sem.ObserverEstacionamiento;
+import observer.ObserverEstacionamiento;
 
 public interface Entidad {
 	
