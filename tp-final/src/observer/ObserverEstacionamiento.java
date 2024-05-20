@@ -1,4 +1,4 @@
-package sem;
+package observer;
 
 import entidad.Entidad;
 

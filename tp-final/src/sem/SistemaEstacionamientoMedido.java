@@ -1,6 +1,8 @@
 package sem;
 
 import app.App;
+import registroDeCompra.RegistroDeCompra;
+
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,20 +15,22 @@ public class SistemaEstacionamientoMedido {
 	private int precioPorHora;
 	private LocalTime horaInicio;
 	private LocalTime horaFin;
+	private List<RegistroDeCompra> registrosDeCompra;
 	
 	public SistemaEstacionamientoMedido(int precioPorHora, LocalTime horaInicio, LocalTime horaFin) {
 		this.zonas = new ArrayList<Zona>();
 		this.precioPorHora = precioPorHora;
 		this.horaInicio = horaInicio;
 		this.horaFin = horaFin;
+		this.registrosDeCompra = new ArrayList<RegistroDeCompra>();
 	}
 	
-	public void cargarCredito(PuntoDeVenta puntoDeVenta, App app, float monto, int nroRegistro) {
-		// TODO Auto-generated method stub
+	public void registrarCargaDeCredito(PuntoDeVenta puntoDeVenta, App app, float monto, int nroRegistro) {
+		// INSTANCIAR UN RegistroCargaDeCredito Y ANIADIRLO A this.registrosDeCompra
 	}
 
 	public void registrarCompraPuntual(PuntoDeVenta puntoDeVenta, String patente, int cantidadHoras, int nroRegistro) {
-		// TODO Auto-generated method stub
+		// INSTANCIAR UN RegistroPorCompraPuntual Y ANIADIRLO A this.registrosDeCompra
 		
 	}
 
