@@ -24,4 +24,6 @@ public class Inspector {
 		return this.zona;
 	}
 
+	
+	
 }
