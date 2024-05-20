@@ -1,8 +1,11 @@
 package sem;
 
 import app.App;
+import registroDeCompra.RegistroCargaDeCredito;
 import registroDeCompra.RegistroDeCompra;
+import registroDeCompra.RegistroPorCompraPuntual;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,13 +28,18 @@ public class SistemaEstacionamientoMedido {
 		this.registrosDeCompra = new ArrayList<RegistroDeCompra>();
 	}
 	
-	public void registrarCargaDeCredito(PuntoDeVenta puntoDeVenta, App app, float monto, int nroRegistro) {
-		// INSTANCIAR UN RegistroCargaDeCredito Y ANIADIRLO A this.registrosDeCompra
+	public void registrarCargaDeCredito(PuntoDeVenta puntoDeVenta, App app, float monto, int nroControl) {
+		LocalDate fechaActual = LocalDate.now();
+		LocalTime horaActual = LocalTime.now();
+		RegistroDeCompra reg = new RegistroCargaDeCredito(nroControl, puntoDeVenta, fechaActual, horaActual, app, monto);
+		registrosDeCompra.add(reg);
 	}
 
-	public void registrarCompraPuntual(PuntoDeVenta puntoDeVenta, String patente, int cantidadHoras, int nroRegistro) {
-		// INSTANCIAR UN RegistroPorCompraPuntual Y ANIADIRLO A this.registrosDeCompra
-		
+	public void registrarCompraPuntual(PuntoDeVenta puntoDeVenta, String patente, int cantidadHoras, int nroControl) {
+		LocalDate fechaActual = LocalDate.now();
+		LocalTime horaActual = LocalTime.now();
+		RegistroDeCompra reg = new RegistroPorCompraPuntual(nroControl, puntoDeVenta, fechaActual, horaActual, cantidadHoras, patente);
+		registrosDeCompra.add(reg);
 	}
 
 	public void generarInfraccion(String patente, Inspector inspector) {
