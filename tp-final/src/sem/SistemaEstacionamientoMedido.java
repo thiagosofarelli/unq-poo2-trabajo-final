@@ -1,6 +1,5 @@
 package sem;
 
-import app.App;
 import registroDeCompra.RegistroCargaDeCredito;
 import registroDeCompra.RegistroDeCompra;
 import registroDeCompra.RegistroPorCompraPuntual;
@@ -11,7 +10,6 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class SistemaEstacionamientoMedido {
 	
@@ -21,22 +19,33 @@ public class SistemaEstacionamientoMedido {
 	private LocalTime horaFin;
 	private List<RegistroDeCompra> registrosDeCompra;
 	private List<RegistroDeInfraccion> registrosDeInfraccion;
+	private HashMap<Integer, Float> creditos;
 	
 	public SistemaEstacionamientoMedido(int precioPorHora, LocalTime horaInicio, LocalTime horaFin) {
-		this.zonas = new ArrayList<Zona>();
-		this.precioPorHora = precioPorHora;
-		this.horaInicio = horaInicio;
-		this.horaFin = horaFin;
-		this.registrosDeCompra = new ArrayList<RegistroDeCompra>();
-		this.registrosDeInfraccion = new ArrayList<RegistroDeInfraccion>();
+		this.zonas 					= new ArrayList<Zona>();
+		this.precioPorHora 			= precioPorHora;
+		this.horaInicio 			= horaInicio;
+		this.horaFin				= horaFin;
+		this.registrosDeCompra 		= new ArrayList<RegistroDeCompra>();
+		this.registrosDeInfraccion 	= new ArrayList<RegistroDeInfraccion>();
+		this.creditos 				= new HashMap<>();
 	}
 	
 	public void registrarCargaDeCredito(PuntoDeVenta puntoDeVenta, int numero, float monto, int nroControl) {
-		LocalDate fechaActual = LocalDate.now();
-		LocalTime horaActual = LocalTime.now();
-		RegistroDeCompra reg = new RegistroCargaDeCredito(nroControl, puntoDeVenta, fechaActual, horaActual, numero, monto);
+		LocalDate fechaActual 	= LocalDate.now();
+		LocalTime horaActual 	= LocalTime.now();
+		RegistroDeCompra reg 	= new RegistroCargaDeCredito(nroControl, puntoDeVenta, fechaActual, horaActual, numero, monto);
 		this.registrosDeCompra.add(reg);
-		// Acá tendriamos que sumar o asignar el saldo al número en un Map.
+		cargarCredito(numero, monto);
+	}
+	
+	public void cargarCredito(int numero, float monto) {
+		if(creditos.containsKey(numero)) {
+			creditos.replace(numero, creditos.get(numero) + monto);
+		}
+		else {
+			creditos.put(numero, monto);
+		}
 	}
 
 	public void registrarCompraPuntual(PuntoDeVenta puntoDeVenta, String patente, int cantidadHoras, int nroControl) {
