@@ -31,10 +31,10 @@ public class SistemaEstacionamientoMedido {
 		this.registrosDeInfraccion = new ArrayList<RegistroDeInfraccion>();
 	}
 	
-	public void registrarCargaDeCredito(PuntoDeVenta puntoDeVenta, App app, float monto, int nroControl) {
+	public void registrarCargaDeCredito(PuntoDeVenta puntoDeVenta, int numero, float monto, int nroControl) {
 		LocalDate fechaActual = LocalDate.now();
 		LocalTime horaActual = LocalTime.now();
-		RegistroDeCompra reg = new RegistroCargaDeCredito(nroControl, puntoDeVenta, fechaActual, horaActual, app, monto);
+		RegistroDeCompra reg = new RegistroCargaDeCredito(nroControl, puntoDeVenta, fechaActual, horaActual, numero, monto);
 		this.registrosDeCompra.add(reg);
 	}
 
