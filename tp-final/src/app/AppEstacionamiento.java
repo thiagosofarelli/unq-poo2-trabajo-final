@@ -7,6 +7,7 @@ import app.modo.Automatico;
 import app.modo.Manual;
 import app.modo.ModoApp;
 import app.sensor.MovementSensor;
+import sem.SistemaEstacionamientoMedido;
 
 public class AppEstacionamiento extends App implements MovementSensor {
 	
@@ -15,7 +16,8 @@ public class AppEstacionamiento extends App implements MovementSensor {
 	private String patente;
 	private ModoApp modo;
 	
-	public AppEstacionamiento(AsistenciaAlUsuario asistencia, int numero, String patente, ModoApp modo) {
+	public AppEstacionamiento(AsistenciaAlUsuario asistencia, int numero, String patente, ModoApp modo, SistemaEstacionamientoMedido sem) {
+		super(sem);
 		this.asistencia = asistencia;
 		this.numero = numero;
 		this.patente = patente;
