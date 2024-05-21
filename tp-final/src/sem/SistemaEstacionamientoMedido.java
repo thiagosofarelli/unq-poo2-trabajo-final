@@ -36,6 +36,7 @@ public class SistemaEstacionamientoMedido {
 		LocalTime horaActual = LocalTime.now();
 		RegistroDeCompra reg = new RegistroCargaDeCredito(nroControl, puntoDeVenta, fechaActual, horaActual, numero, monto);
 		this.registrosDeCompra.add(reg);
+		// Acá tendriamos que sumar o asignar el saldo al número en un Map.
 	}
 
 	public void registrarCompraPuntual(PuntoDeVenta puntoDeVenta, String patente, int cantidadHoras, int nroControl) {
