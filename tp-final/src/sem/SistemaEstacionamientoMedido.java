@@ -19,7 +19,7 @@ public class SistemaEstacionamientoMedido {
 	private LocalTime horaFin;
 	private List<RegistroDeCompra> registrosDeCompra;
 	private List<RegistroDeInfraccion> registrosDeInfraccion;
-	private HashMap<Integer, Float> creditos;
+	private Map<Integer, Float> creditos;
 	
 	public SistemaEstacionamientoMedido(int precioPorHora, LocalTime horaInicio, LocalTime horaFin) {
 		this.zonas 					= new ArrayList<Zona>();
