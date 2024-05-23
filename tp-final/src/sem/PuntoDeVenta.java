@@ -21,4 +21,8 @@ public class PuntoDeVenta {
 		this.sem.registrarCompraPuntual(this, patente, cantidadHoras, nroControl);
 		this.nroControl++;
 	}
+
+	public int getNumeroDeControlActual() {
+		return this.nroControl;
+	}
 }
