@@ -9,9 +9,9 @@ import registroDeInfraccion.RegistroDeInfraccion;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class SistemaEstacionamientoMedido {
 	
@@ -31,8 +31,8 @@ public class SistemaEstacionamientoMedido {
 		this.horaFin					= horaFin;
 		this.registrosDeCompra 			= new ArrayList<RegistroDeCompra>();
 		this.registrosDeInfraccion 		= new ArrayList<RegistroDeInfraccion>();
-		this.creditos 					= new HashMap<>();
-		this.registrosDeEstacionamiento = new HashMap<>();
+		this.creditos 					= new HashMap<Integer, Float>();
+		this.registrosDeEstacionamiento = new HashMap<String, RegistroDeEstacionamiento>();
 	}
 	
 	public void registrarCargaDeCredito(PuntoDeVenta puntoDeVenta, int numero, float monto, int nroControl) {
@@ -54,17 +54,16 @@ public class SistemaEstacionamientoMedido {
 
 	public void registrarCompraPuntual(PuntoDeVenta puntoDeVenta, String patente, int cantidadHoras, int nroControl) {
 		LocalDate fechaActual = LocalDate.now();
-		LocalTime horaActual = LocalTime.now();
-		RegistroDeCompra reg = new RegistroPorCompraPuntual(nroControl, puntoDeVenta, fechaActual, horaActual, cantidadHoras, patente);
+		LocalTime horaActual  = LocalTime.now();
+		RegistroDeCompra reg  = new RegistroPorCompraPuntual(nroControl, puntoDeVenta, fechaActual, horaActual, cantidadHoras, patente);
 		this.registrosDeCompra.add(reg);
 	}
 
 	public void generarInfraccion(String patente, Inspector inspector) {
-		LocalDate fechaActual = LocalDate.now();
-		LocalTime horaActual = LocalTime.now();
+		LocalDate fechaActual 	 = LocalDate.now();
+		LocalTime horaActual  	 = LocalTime.now();
 		RegistroDeInfraccion reg = new RegistroDeInfraccion(fechaActual, horaActual, inspector.getZona(), inspector, patente);
 		this.registrosDeInfraccion.add(reg);
-		
 	}
 
 	public boolean poseeEstacionamientoVigente(String patente) {
