@@ -14,7 +14,5 @@ public class Automatico implements ModoApp {
 	public void recibirAlertaFinEstacionamiento(AppEstacionamiento app) {
 		app.registrarFinEstacionamiento();
 		app.recibirNotificacion("Se ha realizado un fin de estacionamiento de forma automática");
-		
 	}
-
 }
