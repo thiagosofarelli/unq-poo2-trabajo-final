@@ -24,6 +24,20 @@ public class AppEstacionamiento extends App implements MovementSensor {
 		this.modo = modo;
 	}
 	
+	
+	//SETTERS
+	public void setPatente(String patente) {
+		this.patente = patente;
+	}
+	
+	
+	//GETTERS
+	public ModoApp getModo() {
+		return this.modo;
+	}
+	
+	
+	//ASISTENCIA
 	public void activarAsistencia() {
 		this.asistencia = new Activada();
 	}
@@ -32,6 +46,8 @@ public class AppEstacionamiento extends App implements MovementSensor {
 		this.asistencia = new Desactivada();
 	}
 	
+	
+	//MODO
 	public void activarModoAutomatico() {
 		this.modo = new Automatico();
 	}
@@ -40,35 +56,25 @@ public class AppEstacionamiento extends App implements MovementSensor {
 		this.modo = new Manual();
 	}
 	
-	public ModoApp getModo() {
-		return this.modo;
-	}
 	
-	public void setPatente(String patente) {
-		this.patente = patente;
-	}
+	//REGISTROS
+	public void registrarInicioEstacionamiento() {}
 	
-	public void recibirNotificacion(String notificacion) {
-		
-	}
+	public void registrarFinEstacionamiento() {}
 	
-	public void registrarInicioEstacionamiento() {
-		
-	}
-	
-	public void registrarFinEstacionamiento() {
-		
-	}
 
+	//NOTIFICACION
+	public void recibirNotificacion(String notificacion) {}
+	
+	
+	//OVERRIDE
 	@Override
 	public void driving() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void walking() {
 		// TODO Auto-generated method stub
-		
 	}
 }
