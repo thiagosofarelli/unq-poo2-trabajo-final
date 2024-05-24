@@ -3,6 +3,7 @@ package app;
 import app.asistencia.Activada;
 import app.asistencia.AsistenciaAlUsuario;
 import app.asistencia.Desactivada;
+import app.estado.Estado;
 import app.modo.Automatico;
 import app.modo.Manual;
 import app.modo.ModoApp;
@@ -15,19 +16,25 @@ public class AppEstacionamiento extends App implements MovementSensor {
 	private int numero;
 	private String patente;
 	private ModoApp modo;
+	private Estado estado;
 	
-	public AppEstacionamiento(AsistenciaAlUsuario asistencia, int numero, String patente, ModoApp modo, SistemaEstacionamientoMedido sem) {
+	public AppEstacionamiento(AsistenciaAlUsuario asistencia, int numero, String patente, ModoApp modo, SistemaEstacionamientoMedido sem, Estado estado) {
 		super(sem);
 		this.asistencia = asistencia;
 		this.numero = numero;
 		this.patente = patente;
 		this.modo = modo;
+		this.estado = estado;
 	}
 	
 	
 	//SETTERS
 	public void setPatente(String patente) {
 		this.patente = patente;
+	}
+	
+	public void setEstado(Estado estado) {
+		this.estado = estado;
 	}
 	
 	
@@ -70,11 +77,11 @@ public class AppEstacionamiento extends App implements MovementSensor {
 	//OVERRIDE
 	@Override
 	public void driving() {
-		// TODO Auto-generated method stub
+		this.estado.driving(this);
 	}
 
 	@Override
 	public void walking() {
-		// TODO Auto-generated method stub
+		this.estado.walking(this);
 	}
 }

@@ -3,6 +3,7 @@ package sem;
 import registroDeCompra.RegistroCargaDeCredito;
 import registroDeCompra.RegistroDeCompra;
 import registroDeCompra.RegistroPorCompraPuntual;
+import registroDeEstacionamiento.RegistroDeEstacionamiento;
 import registroDeInfraccion.RegistroDeInfraccion;
 
 import java.time.LocalDate;
@@ -21,15 +22,17 @@ public class SistemaEstacionamientoMedido {
 	private List<RegistroDeCompra> registrosDeCompra;
 	private List<RegistroDeInfraccion> registrosDeInfraccion;
 	private Map<Integer, Float> creditos;
+	private Map<String, RegistroDeEstacionamiento> registrosDeEstacionamiento;
 	
 	public SistemaEstacionamientoMedido(int precioPorHora, LocalTime horaInicio, LocalTime horaFin) {
-		this.zonas 					= new ArrayList<Zona>();
-		this.precioPorHora 			= precioPorHora;
-		this.horaInicio 			= horaInicio;
-		this.horaFin				= horaFin;
-		this.registrosDeCompra 		= new ArrayList<RegistroDeCompra>();
-		this.registrosDeInfraccion 	= new ArrayList<RegistroDeInfraccion>();
-		this.creditos 				= new HashMap<Integer, Float>();
+		this.zonas 						= new ArrayList<Zona>();
+		this.precioPorHora 				= precioPorHora;
+		this.horaInicio 				= horaInicio;
+		this.horaFin					= horaFin;
+		this.registrosDeCompra 			= new ArrayList<RegistroDeCompra>();
+		this.registrosDeInfraccion 		= new ArrayList<RegistroDeInfraccion>();
+		this.creditos 					= new HashMap<Integer, Float>();
+		this.registrosDeEstacionamiento = new HashMap<String, RegistroDeEstacionamiento>();
 	}
 	
 	public void registrarCargaDeCredito(PuntoDeVenta puntoDeVenta, int numero, float monto, int nroControl) {
