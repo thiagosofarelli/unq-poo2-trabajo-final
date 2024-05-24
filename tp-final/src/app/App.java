@@ -1,6 +1,5 @@
 package app;
 
-//import sem.Inspector;
 import sem.SistemaEstacionamientoMedido;
 
 public abstract class App {
