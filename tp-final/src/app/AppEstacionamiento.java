@@ -1,5 +1,7 @@
 package app;
 
+import java.time.LocalTime;
+
 import app.asistencia.Activada;
 import app.asistencia.AsistenciaAlUsuario;
 import app.asistencia.Desactivada;
@@ -8,6 +10,7 @@ import app.modo.Automatico;
 import app.modo.Manual;
 import app.modo.ModoApp;
 import app.sensor.MovementSensor;
+import registroDeEstacionamiento.RegistroDeEstacionamientoPorApp;
 import sem.SistemaEstacionamientoMedido;
 
 public class AppEstacionamiento extends App implements MovementSensor {
@@ -60,11 +63,11 @@ public class AppEstacionamiento extends App implements MovementSensor {
 	}
 	
 	public void registrarInicioEstacionamiento() {
-		
+		this.sem.registrarEstacionamientoPorApp(numero, patente, this);
 	}
 	
 	public void registrarFinEstacionamiento() {
-		
+		this.sem.registrarFinEstacionamientoPorApp(numero, this);
 	}
 
 	@Override

@@ -1,6 +1,9 @@
 package sem;
 
+import java.time.LocalTime;
+
 import app.App;
+import registroDeEstacionamiento.RegistroEstacionamientoPuntual;
 
 public class PuntoDeVenta {
 

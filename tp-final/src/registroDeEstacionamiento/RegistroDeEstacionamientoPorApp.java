@@ -17,6 +17,6 @@ public class RegistroDeEstacionamientoPorApp extends RegistroDeEstacionamiento {
 	@Override
 	public boolean estaVigente() {
 		LocalTime horaActual = LocalTime.now();
-		return horaActual.isBefore(this.horaMaxima);
+		return this.getHoraDeFin() == null && horaActual.isBefore(this.horaMaxima);
 	}
 }
