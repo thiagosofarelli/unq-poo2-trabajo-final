@@ -14,5 +14,4 @@ public class Activada implements AsistenciaAlUsuario {
 		app.getModo().recibirAlertaFinEstacionamiento(app);
 
 	}
-
 }

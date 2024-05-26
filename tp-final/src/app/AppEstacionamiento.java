@@ -30,26 +30,8 @@ public class AppEstacionamiento extends App implements MovementSensor {
 		this.estado = estado;
 	}
 	
-	public void activarAsistencia() {
-		this.asistencia = new Activada();
-	}
 	
-	public void desactivarAsistencia() {
-		this.asistencia = new Desactivada();
-	}
-	
-	public void activarModoAutomatico() {
-		this.modo = new Automatico();
-	}
-	
-	public void activarModoManual() {
-		this.modo = new Manual();
-	}
-	
-	public ModoApp getModo() {
-		return this.modo;
-	}
-	
+	//SETTERS
 	public void setPatente(String patente) {
 		this.patente = patente;
 	}
@@ -58,10 +40,33 @@ public class AppEstacionamiento extends App implements MovementSensor {
 		this.estado = estado;
 	}
 	
-	public void recibirNotificacion(String notificacion) {
-		
+	
+	//GETTERS
+	public ModoApp getModo() {
+		return this.modo;
 	}
 	
+	//ASISTENCIA
+	public void activarAsistencia() {
+		this.asistencia = new Activada();
+	}
+	
+	public void desactivarAsistencia() {
+		this.asistencia = new Desactivada();
+	}
+	
+	
+	//MODO
+	public void activarModoAutomatico() {
+		this.modo = new Automatico();
+	}
+	
+	public void activarModoManual() {
+		this.modo = new Manual();
+	}
+	
+	
+	//REGISTROS
 	public void registrarInicioEstacionamiento() {
 		this.sem.registrarEstacionamientoPorApp(numero, patente, this);
 	}
@@ -69,15 +74,20 @@ public class AppEstacionamiento extends App implements MovementSensor {
 	public void registrarFinEstacionamiento() {
 		this.sem.registrarFinEstacionamientoPorApp(numero, this);
 	}
+	
 
+	//NOTIFICACION
+	public void recibirNotificacion(String notificacion) {}
+	
+	
+	//OVERRIDE
 	@Override
 	public void driving() {
 		this.estado.driving(this);
-		
 	}
 
 	@Override
 	public void walking() {
-		this.estado.walking(this);		
+		this.estado.walking(this);
 	}
 }
