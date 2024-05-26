@@ -4,7 +4,7 @@ import sem.SistemaEstacionamientoMedido;
 
 public abstract class App {
 	
-	private SistemaEstacionamientoMedido sem;
+	protected SistemaEstacionamientoMedido sem;
 	
 	public App(SistemaEstacionamientoMedido sem) {
 		this.sem = sem;
