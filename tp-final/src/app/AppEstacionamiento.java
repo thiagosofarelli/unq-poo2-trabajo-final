@@ -10,7 +10,7 @@ import app.modo.Automatico;
 import app.modo.Manual;
 import app.modo.ModoApp;
 import app.sensor.MovementSensor;
-import registroDeEstacionamiento.RegistroDeEstacionamientoPorApp;
+import estacionamiento.EstacionamientoPorApp;
 import sem.SistemaEstacionamientoMedido;
 
 public class AppEstacionamiento extends App implements MovementSensor {

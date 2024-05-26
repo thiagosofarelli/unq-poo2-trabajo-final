@@ -6,14 +6,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import app.AppEstacionamiento;
+import estacionamiento.Estacionamiento;
+import estacionamiento.EstacionamientoPorApp;
+import estacionamiento.EstacionamientoPuntual;
 import registroDeCompra.RegistroDeCompra;
 import registroDeCompra.RegistroPorCompraPuntual;
-import registroDeEstacionamiento.RegistroDeEstacionamiento;
-import registroDeEstacionamiento.RegistroDeEstacionamientoPorApp;
-import registroDeEstacionamiento.RegistroEstacionamientoPuntual;
 
 public class GestorRegistrosDeEstacionamiento {
-	private Map<String, RegistroDeEstacionamiento> registrosDeEstacionamiento= new HashMap<>();
+	private Map<String, Estacionamiento> registrosDeEstacionamiento= new HashMap<>();
 	private Map<Integer, String> registroDePatentePorCelular = new HashMap<>();
 	private SistemaEstacionamientoMedido sem;
 	
@@ -23,7 +23,7 @@ public class GestorRegistrosDeEstacionamiento {
 	
 	public void registrarEstacionamientoPuntual(String patente, LocalTime horaActual, int cantidadHoras, RegistroDeCompra registroCompra) {
 		LocalTime horaFin = horaActual.plusHours(cantidadHoras);
-		RegistroEstacionamientoPuntual registro = new RegistroEstacionamientoPuntual(patente, horaActual, horaFin, registroCompra);
+		EstacionamientoPuntual registro = new EstacionamientoPuntual(patente, horaActual, horaFin, registroCompra);
 		this.registrosDeEstacionamiento.put(patente, registro);
 	}
 
@@ -34,7 +34,7 @@ public class GestorRegistrosDeEstacionamiento {
 			int cantHorasMax = (int) (credito / this.sem.getPrecioPorHora());
 			LocalTime horaMaxPorCredito = horaActual.plusHours(cantHorasMax);
 			LocalTime horaMax = horaMaxPorCredito.isBefore(this.sem.getHoraFin()) ? horaMaxPorCredito : this.sem.getHoraFin();
-			RegistroDeEstacionamientoPorApp registro = new RegistroDeEstacionamientoPorApp(patente, horaActual, null, numero, horaMax);
+			EstacionamientoPorApp registro = new EstacionamientoPorApp(patente, horaActual, null, numero, horaMax);
 			this.registrosDeEstacionamiento.put(patente, registro);
 			this.registroDePatentePorCelular.put(numero, patente);
 			app.recibirNotificacion("Se ha registrado un inicio de estacionamiento a las " + horaActual.toString() + ". La hora máxima  de fin de su estacionamiento es "
@@ -49,7 +49,7 @@ public class GestorRegistrosDeEstacionamiento {
 		
 		if (patente != null) {
 			LocalTime horaActual = LocalTime.now();
-			RegistroDeEstacionamiento registro = this.registrosDeEstacionamiento.get(patente);
+			Estacionamiento registro = this.registrosDeEstacionamiento.get(patente);
 			registro.setHoraDeFin(horaActual);
 			long duracion = Duration.between(registro.getHoraDeInicio(), horaActual).toHours();
 			float costo = duracion * this.sem.getPrecioPorHora();

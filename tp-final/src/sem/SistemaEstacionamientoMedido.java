@@ -3,9 +3,6 @@ package sem;
 import registroDeCompra.RegistroCargaDeCredito;
 import registroDeCompra.RegistroDeCompra;
 import registroDeCompra.RegistroPorCompraPuntual;
-import registroDeEstacionamiento.RegistroDeEstacionamiento;
-import registroDeEstacionamiento.RegistroDeEstacionamientoPorApp;
-import registroDeEstacionamiento.RegistroEstacionamientoPuntual;
 import registroDeInfraccion.RegistroDeInfraccion;
 
 import java.time.LocalDate;
@@ -16,6 +13,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import app.AppEstacionamiento;
+import estacionamiento.Estacionamiento;
+import estacionamiento.EstacionamientoPorApp;
+import estacionamiento.EstacionamientoPuntual;
 
 public class SistemaEstacionamientoMedido {
 	
