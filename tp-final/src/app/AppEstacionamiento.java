@@ -46,6 +46,10 @@ public class AppEstacionamiento extends App implements MovementSensor {
 		return this.modo;
 	}
 	
+	public Float getCredito() {
+		return this.getSEM().getCredito(numero);
+	}
+	
 	//ASISTENCIA
 	public void activarAsistencia() {
 		this.asistencia = new Activada();
