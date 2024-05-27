@@ -15,11 +15,10 @@ public class RegistroDeInfraccion {
 	private String patente;
 	
 	public RegistroDeInfraccion(LocalDate fecha, LocalTime hora, Zona zona, Inspector inspector, String patente) {
-		this.fecha = fecha;
-		this.hora = hora;
-		this.zona = zona;
+		this.fecha     = fecha;
+		this.hora 	   = hora;
+		this.zona      = zona;
 		this.inspector = inspector;
-		this.patente = patente;
+		this.patente   = patente;
 	}
-	
 }

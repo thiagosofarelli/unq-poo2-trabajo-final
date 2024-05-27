@@ -2,15 +2,13 @@ package estacionamiento;
 
 import java.time.LocalTime;
 
-import registroDeCompra.RegistroDeCompra;
-
 public class EstacionamientoPorApp extends Estacionamiento {
 	private int celular;
 	private LocalTime horaMaxima;
 	
 	public EstacionamientoPorApp(String patente, LocalTime horaIn, LocalTime horaFin, int celular, LocalTime horaMax) {
 		super(patente, horaIn, horaFin);
-		this.celular = celular;
+		this.celular 	= celular;
 		this.horaMaxima = horaMax;
 	}
 	

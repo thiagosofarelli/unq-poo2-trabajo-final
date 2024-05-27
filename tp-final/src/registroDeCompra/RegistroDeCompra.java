@@ -13,9 +13,9 @@ public abstract class RegistroDeCompra {
 		private LocalTime hora;
 		
 		public RegistroDeCompra(int nroControl, PuntoDeVenta puntoDeVenta, LocalDate fecha, LocalTime hora) {
-			this.nroControl = nroControl;
+			this.nroControl   = nroControl;
 			this.puntoDeVenta = puntoDeVenta;
-			this.fecha = fecha;
-			this.hora = hora;
+			this.fecha 		  = fecha;
+			this.hora 		  = hora;
 		}
 }
