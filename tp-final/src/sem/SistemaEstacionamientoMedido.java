@@ -1,11 +1,9 @@
 package sem;
 
 import registroDeCompra.RegistroCargaDeCredito;
+import entidad.Entidad;
 import registroDeCompra.RegistroDeCompra;
 import registroDeCompra.RegistroPorCompraPuntual;
-import registroDeEstacionamiento.RegistroDeEstacionamiento;
-import registroDeEstacionamiento.RegistroDeEstacionamientoPorApp;
-import registroDeEstacionamiento.RegistroEstacionamientoPuntual;
 import registroDeInfraccion.RegistroDeInfraccion;
 
 import java.time.LocalDate;
@@ -16,10 +14,15 @@ import java.util.HashMap;
 import java.util.List;
 
 import app.AppEstacionamiento;
+import estacionamiento.Estacionamiento;
+import estacionamiento.EstacionamientoPorApp;
+import estacionamiento.EstacionamientoPuntual;
+import observer.ObserverEstacionamiento;
 
-public class SistemaEstacionamientoMedido {
+public class SistemaEstacionamientoMedido implements ObserverEstacionamiento{
 	
 	private List<Zona> zonas;
+	private List<Entidad> entidades;
 	private int precioPorHora;
 	private LocalTime horaInicio;
 	private LocalTime horaFin;
@@ -38,6 +41,7 @@ public class SistemaEstacionamientoMedido {
 		this.registrosDeInfraccion 		= new ArrayList<RegistroDeInfraccion>();
 		this.gestorEstacionamientos     = gestorEstacionamientos;
 		this.creditos 					= new HashMap<Integer, Float>();
+		this.entidades					= new ArrayList<Entidad>();
 	}
 	
 	public int getPrecioPorHora() {
@@ -105,6 +109,32 @@ public class SistemaEstacionamientoMedido {
 
 	public boolean poseeEstacionamientoVigente(String patente) {
 		return this.gestorEstacionamientos.poseeEstacionamientoVigente(patente);
+	}
+
+	@Override
+	public void suscribir(Entidad entidad) {
+		this.entidades.add(entidad);
+	}
+
+	@Override
+	public void desuscribir(Entidad entidad) {
+		this.entidades.remove(entidad);
+	}
+
+	@Override
+	public void notificarInicioEstacionamiento(Estacionamiento estacionamiento) {
+		this.entidades.stream().forEach(entidad -> entidad.actualizarInicioEstacionamiento(this, estacionamiento));
+	}
+
+	@Override
+	public void notificarFinEstacionamiento(Estacionamiento estacionamiento) {
+		this.entidades.stream().forEach(entidad -> entidad.actualizarFinEstacionamiento(this, estacionamiento));
+		
+	}
+
+	@Override
+	public void notificarRecargaDeCredito(RegistroCargaDeCredito registro) {
+		this.entidades.stream().forEach(entidad -> entidad.actualizarRecargaDeCredito(this, registro));
 	}
 		
 }

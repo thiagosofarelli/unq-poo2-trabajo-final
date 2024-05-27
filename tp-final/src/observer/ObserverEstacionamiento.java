@@ -1,6 +1,8 @@
 package observer;
 
 import entidad.Entidad;
+import estacionamiento.Estacionamiento;
+import registroDeCompra.RegistroCargaDeCredito;
 
 public interface ObserverEstacionamiento {
 
@@ -8,9 +10,9 @@ public interface ObserverEstacionamiento {
 
 	public void desuscribir(Entidad entidad);
 
-	public void notificarInicioEstacionamiento();
+	public void notificarInicioEstacionamiento(Estacionamiento estacionamiento);
 
-	public void notificarFinEstacionamiento();
+	public void notificarFinEstacionamiento(Estacionamiento estacionamiento);
 
-	public void notificarRecargaDeCredito();
+	public void notificarRecargaDeCredito(RegistroCargaDeCredito registroCargaDeCredito);
 }

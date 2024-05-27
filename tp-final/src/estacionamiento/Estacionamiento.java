@@ -1,13 +1,13 @@
-package registroDeEstacionamiento;
+package estacionamiento;
 
 import java.time.LocalTime;
 
-public abstract class RegistroDeEstacionamiento {
+public abstract class Estacionamiento {
 	private String patente;
 	private LocalTime horaDeInicio;
 	private LocalTime horaDeFin;
 	
-	public RegistroDeEstacionamiento(String patente, LocalTime horaIn, LocalTime horaFin) {
+	public Estacionamiento(String patente, LocalTime horaIn, LocalTime horaFin) {
 		this.patente = patente;
 		this.horaDeInicio = horaIn;
 		this.horaDeFin = horaFin;

@@ -3,7 +3,7 @@ package sem;
 import java.time.LocalTime;
 
 import app.App;
-import registroDeEstacionamiento.RegistroEstacionamientoPuntual;
+import estacionamiento.EstacionamientoPuntual;
 
 public class PuntoDeVenta {
 

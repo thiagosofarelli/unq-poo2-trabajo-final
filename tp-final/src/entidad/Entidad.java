@@ -1,6 +1,9 @@
 package entidad;
 
+import estacionamiento.Estacionamiento;
 import observer.ObserverEstacionamiento;
+import registroDeCompra.RegistroCargaDeCredito;
+import sem.SistemaEstacionamientoMedido;
 
 public interface Entidad {
 	
@@ -8,10 +11,10 @@ public interface Entidad {
 
 	public void desuscribirme(ObserverEstacionamiento obs);
 
-	public void actualizarInicioEstacionamiento();
+	public void actualizarInicioEstacionamiento(SistemaEstacionamientoMedido sem, Estacionamiento inicioDeEstacionamiento);
 
-	public void actualizarFinEstacionamiento();
+	public void actualizarFinEstacionamiento(SistemaEstacionamientoMedido sem, Estacionamiento finalizacionDeEstacionamiento);
 
-	public void actualizarRecargaDeCredito();
+	public void actualizarRecargaDeCredito(SistemaEstacionamientoMedido sem, RegistroCargaDeCredito cargaDeCredito);
 	
 }
