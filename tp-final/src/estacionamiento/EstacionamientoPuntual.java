@@ -5,6 +5,7 @@ import java.time.LocalTime;
 import registroDeCompra.RegistroDeCompra;
 
 public class EstacionamientoPuntual extends Estacionamiento {
+	
 	private RegistroDeCompra compra;
 	
 	public EstacionamientoPuntual(String patente, LocalTime horaIn, LocalTime horaFin, RegistroDeCompra compra) {
@@ -17,5 +18,4 @@ public class EstacionamientoPuntual extends Estacionamiento {
 		LocalTime horaActual = LocalTime.now();
 		return horaActual.isBefore(this.getHoraDeFin());
 	}
-
 }
