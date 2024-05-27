@@ -6,7 +6,7 @@ public class Automatico implements ModoApp {
 
 	@Override
 	public void recibirAlertaInicioEstacionamiento(AppEstacionamiento app) {
-		app.registrarInicioEstacionamiento();
+		app.registrarInicioEstacionamiento() ;
 		app.recibirNotificacion("Se ha realizado un inicio de estacionamiento de forma automática");
 	}
 

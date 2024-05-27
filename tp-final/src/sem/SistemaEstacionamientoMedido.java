@@ -84,7 +84,11 @@ public class SistemaEstacionamientoMedido {
 	
 	
 	public void registrarEstacionamientoPorApp(int numero, String patente, AppEstacionamiento app ) {
-		this.gestorEstacionamientos.registrarEstacionamientoPorApp(numero, patente, app);
+		try {
+			this.gestorEstacionamientos.registrarEstacionamientoPorApp(numero, patente, app);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+		}
 	}
 	
 	public void registrarFinEstacionamientoPorApp(int numero, AppEstacionamiento app) {

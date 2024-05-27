@@ -5,12 +5,12 @@ import app.AppEstacionamiento;
 public class Desactivada implements AsistenciaAlUsuario {
 
 	@Override
-	public void recibirAlertaInicioEstacionamiento(AppEstacionamiento app) {
+	public void driving(AppEstacionamiento app) {
 		// TODO Auto-generated method stub
 	}
 
 	@Override
-	public void recibirAlertaFinEstacionamiento(AppEstacionamiento app) {
+	public void walking(AppEstacionamiento app) {
 		// TODO Auto-generated method stub
 	}
 }

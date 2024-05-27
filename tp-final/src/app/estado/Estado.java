@@ -4,7 +4,7 @@ import app.AppEstacionamiento;
 
 public abstract class Estado {
 	
-	private Estado proximoEstado;
+	protected Estado proximoEstado;
 	
 	public abstract void driving(AppEstacionamiento app);
 	

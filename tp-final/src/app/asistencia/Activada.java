@@ -5,13 +5,13 @@ import app.AppEstacionamiento;
 public class Activada implements AsistenciaAlUsuario {
 
 	@Override
-	public void recibirAlertaInicioEstacionamiento(AppEstacionamiento app) {
-		app.getModo().recibirAlertaInicioEstacionamiento(app);
+	public void walking(AppEstacionamiento app) {
+		app.getEstado().walking(app);
 	}
 
 	@Override
-	public void recibirAlertaFinEstacionamiento(AppEstacionamiento app) {
-		app.getModo().recibirAlertaFinEstacionamiento(app);
+	public void driving(AppEstacionamiento app) {
+		app.getEstado().driving(app);
 
 	}
 }
