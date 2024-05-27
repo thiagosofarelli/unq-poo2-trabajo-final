@@ -30,7 +30,6 @@ public class GestorRegistrosDeEstacionamiento {
 	public void registrarEstacionamientoPorApp(int numero, String patente, AppEstacionamiento app ) throws Exception {
 		if (this.registroDePatentePorCelular.containsKey(numero)) {
 			throw new Exception("El numero ya tiene un estacionamiento vigente");
-
 		} else {
 			LocalTime horaActual = LocalTime.now();
 			Float credito = this.sem.getCredito(numero);
@@ -45,7 +44,8 @@ public class GestorRegistrosDeEstacionamiento {
 						+ horaMax.toString());
 			} else {
 				app.recibirNotificacion("No tiene saldo suficiente para la compra");
-		}}
+			}
+		}
 	}
 	
 	public void registrarFinDeEstacionamientoPorApp(int numero, AppEstacionamiento app) {

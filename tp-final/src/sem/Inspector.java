@@ -1,6 +1,5 @@
 package sem;
 
-import app.App;
 import app.AppInspector;
 
 public class Inspector {
@@ -10,9 +9,13 @@ public class Inspector {
 	private AppInspector app;
 	
 	public Inspector(SistemaEstacionamientoMedido sem, Zona zona, AppInspector app) {
-		this.sem = sem;
+		this.sem  = sem;
 		this.zona = zona;
-		this.app = app;
+		this.app  = app;
+	}
+	
+	public Zona getZona() {
+		return this.zona;
 	}
 	
 	public boolean poseeEstacionamientoVigente(String patente) {
@@ -24,11 +27,4 @@ public class Inspector {
 	        app.generarInfraccion(patente, this);
 	    }
 	}
-	
-	public Zona getZona() {
-		return this.zona;
-	}
-
-	
-	
 }
