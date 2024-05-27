@@ -3,6 +3,7 @@ package app.estado;
 import app.AppEstacionamiento;
 
 public class Estacionado extends Estado {
+	
 	public Estacionado() {
 		this.proximoEstado = new Manejando();
 	}

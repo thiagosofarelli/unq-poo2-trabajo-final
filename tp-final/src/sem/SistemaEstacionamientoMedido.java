@@ -15,8 +15,6 @@ import java.util.List;
 
 import app.AppEstacionamiento;
 import estacionamiento.Estacionamiento;
-import estacionamiento.EstacionamientoPorApp;
-import estacionamiento.EstacionamientoPuntual;
 import observer.ObserverEstacionamiento;
 
 public class SistemaEstacionamientoMedido implements ObserverEstacionamiento{
@@ -44,6 +42,8 @@ public class SistemaEstacionamientoMedido implements ObserverEstacionamiento{
 		this.entidades					= new ArrayList<Entidad>();
 	}
 	
+	
+	//GETTERS
 	public int getPrecioPorHora() {
 		return this.precioPorHora;
 	}
@@ -51,7 +51,13 @@ public class SistemaEstacionamientoMedido implements ObserverEstacionamiento{
 	public LocalTime getHoraFin() {
 		return this.horaFin;
 	}
-		
+	
+	public float getCredito(int numero) {
+		return this.creditos.get(numero);
+	}
+	
+	
+	//CREDITO	
 	public void registrarCargaDeCredito(PuntoDeVenta puntoDeVenta, int numero, float monto, int nroControl) {
 		LocalDate fechaActual 	= LocalDate.now();
 		LocalTime horaActual 	= LocalTime.now();
@@ -60,7 +66,7 @@ public class SistemaEstacionamientoMedido implements ObserverEstacionamiento{
 		cargarCredito(numero, monto);
 	}
 	
-	public void cargarCredito(int numero, float monto) {
+	private void cargarCredito(int numero, float monto) {
 		if(creditos.containsKey(numero)) {
 			creditos.replace(numero, creditos.get(numero) + monto);
 		}
@@ -69,15 +75,13 @@ public class SistemaEstacionamientoMedido implements ObserverEstacionamiento{
 		}
 	}
 	
-	public Float getCredito(int numero) {
-		return this.creditos.get(numero);
-	}
-	
 	public void debitarCredito(float credito, int numero) {
 		float creditoActual = this.creditos.get(numero);
 		this.creditos.put(numero, creditoActual - credito);
 	}
 
+	
+	//ESTACIONAMIENTO
 	public void registrarCompraPuntual(PuntoDeVenta puntoDeVenta, String patente, int cantidadHoras, int nroControl) {
 		LocalDate fechaActual = LocalDate.now();
 		LocalTime horaActual  = LocalTime.now();
@@ -86,31 +90,29 @@ public class SistemaEstacionamientoMedido implements ObserverEstacionamiento{
 		this.gestorEstacionamientos.registrarEstacionamientoPuntual(patente, horaActual, cantidadHoras, reg);
 	}
 	
-	
 	public void registrarEstacionamientoPorApp(int numero, String patente, AppEstacionamiento app ) {
 		try {
 			this.gestorEstacionamientos.registrarEstacionamientoPorApp(numero, patente, app);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-		}
+		} catch (Exception e) {}
 	}
 	
 	public void registrarFinEstacionamientoPorApp(int numero, AppEstacionamiento app) {
 		this.gestorEstacionamientos.registrarFinDeEstacionamientoPorApp(numero, app);
 	}
-	
 
+	public boolean poseeEstacionamientoVigente(String patente) {
+		return this.gestorEstacionamientos.poseeEstacionamientoVigente(patente);
+	}
+	
 	public void generarInfraccion(String patente, Inspector inspector) {
 		LocalDate fechaActual 	 = LocalDate.now();
 		LocalTime horaActual  	 = LocalTime.now();
 		RegistroDeInfraccion reg = new RegistroDeInfraccion(fechaActual, horaActual, inspector.getZona(), inspector, patente);
 		this.registrosDeInfraccion.add(reg);
 	}
-
-	public boolean poseeEstacionamientoVigente(String patente) {
-		return this.gestorEstacionamientos.poseeEstacionamientoVigente(patente);
-	}
-
+	
+	
+	//OVERRIDES
 	@Override
 	public void suscribir(Entidad entidad) {
 		this.entidades.add(entidad);
@@ -129,7 +131,6 @@ public class SistemaEstacionamientoMedido implements ObserverEstacionamiento{
 	@Override
 	public void notificarFinEstacionamiento(Estacionamiento estacionamiento) {
 		this.entidades.stream().forEach(entidad -> entidad.actualizarFinEstacionamiento(this, estacionamiento));
-		
 	}
 
 	@Override

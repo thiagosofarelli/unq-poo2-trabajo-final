@@ -1,7 +1,5 @@
 package app;
 
-import java.time.LocalTime;
-
 import app.asistencia.Activada;
 import app.asistencia.AsistenciaAlUsuario;
 import app.asistencia.Desactivada;
@@ -10,7 +8,6 @@ import app.modo.Automatico;
 import app.modo.Manual;
 import app.modo.ModoApp;
 import app.sensor.MovementSensor;
-import estacionamiento.EstacionamientoPorApp;
 import sem.SistemaEstacionamientoMedido;
 
 public class AppEstacionamiento extends App implements MovementSensor {
@@ -24,10 +21,10 @@ public class AppEstacionamiento extends App implements MovementSensor {
 	public AppEstacionamiento(AsistenciaAlUsuario asistencia, int numero, String patente, ModoApp modo, SistemaEstacionamientoMedido sem, Estado estado) {
 		super(sem);
 		this.asistencia = asistencia;
-		this.numero = numero;
-		this.patente = patente;
-		this.modo = modo;
-		this.estado = estado;
+		this.numero 	= numero;
+		this.patente	= patente;
+		this.modo 		= modo;
+		this.estado 	= estado;
 	}
 	
 	
@@ -40,19 +37,20 @@ public class AppEstacionamiento extends App implements MovementSensor {
 		this.estado = estado;
 	}
 	
-	public Estado getEstado() {
-		return this.estado;
-	}
-	
 	
 	//GETTERS
 	public ModoApp getModo() {
 		return this.modo;
 	}
 	
-	public Float getCredito() {
+	public float getCredito() {
 		return this.getSEM().getCredito(numero);
 	}
+
+	public Estado getEstado() {
+		return this.estado;
+	}
+	
 	
 	//ASISTENCIA
 	public void activarAsistencia() {
@@ -66,7 +64,7 @@ public class AppEstacionamiento extends App implements MovementSensor {
 	
 	//MODO
 	public void activarModoAutomatico() {
-		this.modo = new Automatico();
+		this.modo 		= new Automatico();
 		this.asistencia = new Activada();
 	}
 	

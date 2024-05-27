@@ -1,18 +1,17 @@
 package sem;
 
-import java.time.LocalTime;
-
-import app.App;
-import estacionamiento.EstacionamientoPuntual;
-
 public class PuntoDeVenta {
 
 	private SistemaEstacionamientoMedido sem;
 	private int nroControl;
 	
 	public PuntoDeVenta(SistemaEstacionamientoMedido sem) {
-		this.sem = sem;
+		this.sem 		= sem;
 		this.nroControl = 0;
+	}
+
+	public int getNumeroDeControlActual() {
+		return this.nroControl;
 	}
 	
 	public void registrarCargaDeCredito(int numero, float monto) {
@@ -23,9 +22,5 @@ public class PuntoDeVenta {
 	public void registrarCompraPuntual(String patente, int cantidadHoras) {
 		this.sem.registrarCompraPuntual(this, patente, cantidadHoras, nroControl);
 		this.nroControl++;
-	}
-
-	public int getNumeroDeControlActual() {
-		return this.nroControl;
 	}
 }
