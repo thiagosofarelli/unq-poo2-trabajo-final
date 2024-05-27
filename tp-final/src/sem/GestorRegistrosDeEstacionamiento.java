@@ -27,21 +27,25 @@ public class GestorRegistrosDeEstacionamiento {
 		this.registrosDeEstacionamiento.put(patente, registro);
 	}
 
-	public void registrarEstacionamientoPorApp(int numero, String patente, AppEstacionamiento app ) {
-		LocalTime horaActual = LocalTime.now();
-		Float credito = this.sem.getCredito(numero);
-		if (credito != null) {
-			int cantHorasMax = (int) (credito / this.sem.getPrecioPorHora());
-			LocalTime horaMaxPorCredito = horaActual.plusHours(cantHorasMax);
-			LocalTime horaMax = horaMaxPorCredito.isBefore(this.sem.getHoraFin()) ? horaMaxPorCredito : this.sem.getHoraFin();
-			EstacionamientoPorApp registro = new EstacionamientoPorApp(patente, horaActual, null, numero, horaMax);
-			this.registrosDeEstacionamiento.put(patente, registro);
-			this.registroDePatentePorCelular.put(numero, patente);
-			app.recibirNotificacion("Se ha registrado un inicio de estacionamiento a las " + horaActual.toString() + ". La hora máxima  de fin de su estacionamiento es "
-			+ horaMax.toString());
+	public void registrarEstacionamientoPorApp(int numero, String patente, AppEstacionamiento app ) throws Exception {
+		if (this.registroDePatentePorCelular.containsKey(numero)) {
+			throw new Exception("El numero ya tiene un estacionamiento vigente");
+
 		} else {
-			app.recibirNotificacion("No tiene saldo suficiente para la compra");
-		}
+			LocalTime horaActual = LocalTime.now();
+			Float credito = this.sem.getCredito(numero);
+			if (credito != null && credito > 0) {
+				int cantHorasMax = (int) (credito / this.sem.getPrecioPorHora());
+				LocalTime horaMaxPorCredito = horaActual.plusHours(cantHorasMax);
+				LocalTime horaMax = horaMaxPorCredito.isBefore(this.sem.getHoraFin()) ? horaMaxPorCredito : this.sem.getHoraFin();
+				RegistroDeEstacionamientoPorApp registro = new RegistroDeEstacionamientoPorApp(patente, horaActual, null, numero, horaMax);
+				this.registrosDeEstacionamiento.put(patente, registro);
+				this.registroDePatentePorCelular.put(numero, patente);
+				app.recibirNotificacion("Se ha registrado un inicio de estacionamiento a las " + horaActual.toString() + ". La hora máxima  de fin de su estacionamiento es "
+						+ horaMax.toString());
+			} else {
+				app.recibirNotificacion("No tiene saldo suficiente para la compra");
+		}}
 	}
 	
 	public void registrarFinDeEstacionamientoPorApp(int numero, AppEstacionamiento app) {

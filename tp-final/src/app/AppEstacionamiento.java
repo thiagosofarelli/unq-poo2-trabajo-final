@@ -40,6 +40,10 @@ public class AppEstacionamiento extends App implements MovementSensor {
 		this.estado = estado;
 	}
 	
+	public Estado getEstado() {
+		return this.estado;
+	}
+	
 	
 	//GETTERS
 	public ModoApp getModo() {
@@ -63,6 +67,7 @@ public class AppEstacionamiento extends App implements MovementSensor {
 	//MODO
 	public void activarModoAutomatico() {
 		this.modo = new Automatico();
+		this.asistencia = new Activada();
 	}
 	
 	public void activarModoManual() {
@@ -87,11 +92,11 @@ public class AppEstacionamiento extends App implements MovementSensor {
 	//OVERRIDE
 	@Override
 	public void driving() {
-		this.estado.driving(this);
+		this.asistencia.driving(this);
 	}
 
 	@Override
 	public void walking() {
-		this.estado.walking(this);
+		this.asistencia.walking(this);
 	}
 }
