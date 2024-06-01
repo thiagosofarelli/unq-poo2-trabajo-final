@@ -39,7 +39,8 @@ public class GestorRegistrosDeEstacionamiento {
 				int cantHorasMax = (int) (credito / this.sem.getPrecioPorHora());
 				LocalTime horaMaxPorCredito = horaActual.plusHours(cantHorasMax);
 				LocalTime horaMax = horaMaxPorCredito.isBefore(this.sem.getHoraFin()) ? horaMaxPorCredito : this.sem.getHoraFin();
-				EstacionamientoPorApp registro = new EstacionamientoPorApp(patente, horaActual, null, numero, horaMax);
+
+				Estacionamiento registro = new EstacionamientoPorApp(patente, horaActual, null, numero, horaMax);
 				this.registrosDeEstacionamiento.put(patente, registro);
 				this.registroDePatentePorCelular.put(numero, patente);
 				app.recibirNotificacion("Se ha registrado un inicio de estacionamiento a las " + horaActual.toString() + ". La hora máxima  de fin de su estacionamiento es "
