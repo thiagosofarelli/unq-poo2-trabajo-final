@@ -4,6 +4,7 @@ import app.asistencia.Activada;
 import app.asistencia.AsistenciaAlUsuario;
 import app.asistencia.Desactivada;
 import app.estado.Estado;
+import app.estado.Manejando;
 import app.modo.Automatico;
 import app.modo.Manual;
 import app.modo.ModoApp;
@@ -18,13 +19,13 @@ public class AppEstacionamiento extends App implements MovementSensor {
 	private ModoApp modo;
 	private Estado estado;
 	
-	public AppEstacionamiento(AsistenciaAlUsuario asistencia, int numero, String patente, ModoApp modo, SistemaEstacionamientoMedido sem, Estado estado) {
+	public AppEstacionamiento(int numero, String patente, SistemaEstacionamientoMedido sem) {
 		super(sem);
-		this.asistencia = asistencia;
+		this.asistencia = new Desactivada();
 		this.numero 	= numero;
 		this.patente	= patente;
-		this.modo 		= modo;
-		this.estado 	= estado;
+		this.modo 		= new Manual();
+		this.estado 	= new Manejando();
 	}
 	
 	
@@ -43,12 +44,24 @@ public class AppEstacionamiento extends App implements MovementSensor {
 		return this.modo;
 	}
 	
+	public int getNumero() {
+		return this.numero;
+	}
+	
+	public String getPatente() {
+		return this.patente;
+	}
+	
 	public float getCredito() {
 		return this.getSEM().getCredito(numero);
 	}
 
 	public Estado getEstado() {
 		return this.estado;
+	}
+	
+	public AsistenciaAlUsuario getAsistencia() {
+		return this.asistencia;
 	}
 	
 	
@@ -72,14 +85,13 @@ public class AppEstacionamiento extends App implements MovementSensor {
 		this.modo = new Manual();
 	}
 	
-	
 	//REGISTROS
 	public void registrarInicioEstacionamiento() {
-		this.sem.registrarEstacionamientoPorApp(numero, patente, this);
+		this.estado.registrarInicioEstacionamiento(this);
 	}
 	
 	public void registrarFinEstacionamiento() {
-		this.sem.registrarFinEstacionamientoPorApp(numero, this);
+		this.estado.registrarFinEstacionamiento(this);
 	}
 	
 
@@ -90,11 +102,11 @@ public class AppEstacionamiento extends App implements MovementSensor {
 	//OVERRIDE
 	@Override
 	public void driving() {
-		this.asistencia.driving(this);
+		this.estado.driving(this);
 	}
 
 	@Override
 	public void walking() {
-		this.asistencia.walking(this);
+		this.estado.walking(this);
 	}
 }

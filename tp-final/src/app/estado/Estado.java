@@ -2,15 +2,14 @@ package app.estado;
 
 import app.AppEstacionamiento;
 
-public abstract class Estado {
+public class Estado {
+		
+	public void driving(AppEstacionamiento app) {};
 	
-	protected Estado proximoEstado;
+	public void walking(AppEstacionamiento app) {};
 	
-	public abstract void driving(AppEstacionamiento app);
+	public void registrarInicioEstacionamiento(AppEstacionamiento app) {};
 	
-	public abstract void walking(AppEstacionamiento app);
+	public void registrarFinEstacionamiento(AppEstacionamiento app) {};
 	
-	public Estado getProximoEstado() {
-		return this.proximoEstado;
-	}
 }

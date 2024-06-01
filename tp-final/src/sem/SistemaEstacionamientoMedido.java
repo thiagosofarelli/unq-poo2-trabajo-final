@@ -90,14 +90,14 @@ public class SistemaEstacionamientoMedido implements ObserverEstacionamiento{
 		this.gestorEstacionamientos.registrarEstacionamientoPuntual(patente, horaActual, cantidadHoras, reg);
 	}
 	
-	public void registrarEstacionamientoPorApp(int numero, String patente, AppEstacionamiento app ) {
+	public void registrarEstacionamientoPorApp(AppEstacionamiento app ) {
 		try {
-			this.gestorEstacionamientos.registrarEstacionamientoPorApp(numero, patente, app);
+			this.gestorEstacionamientos.registrarEstacionamientoPorApp(app);
 		} catch (Exception e) {}
 	}
 	
-	public void registrarFinEstacionamientoPorApp(int numero, AppEstacionamiento app) {
-		this.gestorEstacionamientos.registrarFinDeEstacionamientoPorApp(numero, app);
+	public void registrarFinEstacionamientoPorApp(AppEstacionamiento app) {
+		this.gestorEstacionamientos.registrarFinDeEstacionamientoPorApp(app);
 	}
 
 	public boolean poseeEstacionamientoVigente(String patente) {

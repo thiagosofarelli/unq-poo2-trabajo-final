@@ -27,7 +27,9 @@ public class GestorRegistrosDeEstacionamiento {
 		this.registrosDeEstacionamiento.put(patente, registro);
 	}
 
-	public void registrarEstacionamientoPorApp(int numero, String patente, AppEstacionamiento app ) throws Exception {
+	public void registrarEstacionamientoPorApp( AppEstacionamiento app ) throws Exception {
+		int numero = app.getNumero();
+		String patente = app.getPatente();
 		if (this.registroDePatentePorCelular.containsKey(numero)) {
 			throw new Exception("El numero ya tiene un estacionamiento vigente");
 		} else {
@@ -37,7 +39,7 @@ public class GestorRegistrosDeEstacionamiento {
 				int cantHorasMax = (int) (credito / this.sem.getPrecioPorHora());
 				LocalTime horaMaxPorCredito = horaActual.plusHours(cantHorasMax);
 				LocalTime horaMax = horaMaxPorCredito.isBefore(this.sem.getHoraFin()) ? horaMaxPorCredito : this.sem.getHoraFin();
-				RegistroDeEstacionamientoPorApp registro = new RegistroDeEstacionamientoPorApp(patente, horaActual, null, numero, horaMax);
+				EstacionamientoPorApp registro = new EstacionamientoPorApp(patente, horaActual, null, numero, horaMax);
 				this.registrosDeEstacionamiento.put(patente, registro);
 				this.registroDePatentePorCelular.put(numero, patente);
 				app.recibirNotificacion("Se ha registrado un inicio de estacionamiento a las " + horaActual.toString() + ". La hora máxima  de fin de su estacionamiento es "
@@ -48,8 +50,9 @@ public class GestorRegistrosDeEstacionamiento {
 		}
 	}
 	
-	public void registrarFinDeEstacionamientoPorApp(int numero, AppEstacionamiento app) {
-		String patente = this.registroDePatentePorCelular.get(numero);
+	public void registrarFinDeEstacionamientoPorApp( AppEstacionamiento app) {
+		int numero = app.getNumero()
+;		String patente = this.registroDePatentePorCelular.get(numero);
 		
 		if (patente != null) {
 			LocalTime horaActual = LocalTime.now();
