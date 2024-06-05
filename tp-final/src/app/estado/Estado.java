@@ -11,5 +11,5 @@ public class Estado {
 	public void registrarInicioEstacionamiento(AppEstacionamiento app) {};
 	
 	public void registrarFinEstacionamiento(AppEstacionamiento app) {};
-	
+
 }

@@ -12,6 +12,6 @@ public class Estacionado extends Estado {
 	@Override
 	public void registrarFinEstacionamiento(AppEstacionamiento app) {
 		app.setEstado(new Manejando());
-		app.getSEM().registrarEstacionamientoPorApp(app);
+		app.getSEM().registrarFinEstacionamientoPorApp(app);
 	}
 }
