@@ -85,7 +85,10 @@ public class AppEstacionamientoTest {
 	void seRegistraUnFinDeEstacionamientoConElAutoEstacionado() {
 		app.registrarInicioEstacionamiento();
 		app.registrarFinEstacionamiento();
+<<<<<<< HEAD
 		
+=======
+>>>>>>> branch 'master' of https://github.com/thiagosofarelli/tpFinal
 		verify(sem, times(0)).registrarFinEstacionamientoPorApp(app);
 	}
 

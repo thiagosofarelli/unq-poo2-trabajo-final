@@ -76,4 +76,7 @@ public class GestorRegistrosDeEstacionamiento {
 		return this.registrosDeEstacionamiento;
 	}
 	
+	public  Map<Integer, String> getRegistrosDePatentePorCelular() {
+		return this.registroDePatentePorCelular;
+	}
 }
