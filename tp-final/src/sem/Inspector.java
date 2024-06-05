@@ -1,17 +1,13 @@
 package sem;
 
-import app.AppInspector;
-
 public class Inspector {
 
 	private SistemaEstacionamientoMedido sem;
 	private Zona zona;
-	private AppInspector app;
 	
-	public Inspector(SistemaEstacionamientoMedido sem, Zona zona, AppInspector app) {
+	public Inspector(SistemaEstacionamientoMedido sem, Zona zona) {
 		this.sem  = sem;
 		this.zona = zona;
-		this.app  = app;
 	}
 	
 	public Zona getZona() {
@@ -19,12 +15,12 @@ public class Inspector {
 	}
 	
 	public boolean poseeEstacionamientoVigente(String patente) {
-		return this.app.poseeEstacionamientoVigente(patente);
+		return this.sem.poseeEstacionamientoVigente(patente);
 	}
 	
 	public void generarInfraccion(String patente) {
 	    if (!poseeEstacionamientoVigente(patente)) {
-	        app.generarInfraccion(patente, this);
+	        this.sem.generarInfraccion(patente, this);
 	    }
 	}
 }
