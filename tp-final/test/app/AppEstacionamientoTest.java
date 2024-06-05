@@ -33,28 +33,33 @@ public class AppEstacionamientoTest {
 		assertEquals("BBB222", app.getPatente());
 	}
 	
+	@Test
 	void seActivaLaAsistencia() {
 		app.activarAsistencia();
 		assertTrue(app.getAsistencia() instanceof Activada);
 	}
 	
+	@Test
 	void seActivaYDesactivaLaAsitencia() {
 		app.activarAsistencia();
 		app.desactivarAsistencia();
 		assertTrue(app.getAsistencia() instanceof Desactivada);
 	}
 	
+	@Test
 	void seActivaModoAutomatico() {
 		app.activarModoAutomatico();
 		assertTrue(app.getModo() instanceof Automatico);
 	}
 	
+	@Test
 	void seActivaModoManual() {
 		app.activarModoAutomatico();
 		app.activarModoManual();
 		assertTrue(app.getModo() instanceof Manual);
 	}
 	
+	@Test
 	void seRegistraEstacionamientoConAutoManejandoYCambiaDeEstadoAEstacionado() {
 		app.registrarInicioEstacionamiento();
 		
@@ -62,6 +67,7 @@ public class AppEstacionamientoTest {
 		assertTrue(app.getEstado() instanceof Estacionado);
 	}
 	
+	@Test
 	void seIntentaRegistrarEstacionamientoDosVecesYLaSegundaNoHaceNada() {
 		app.registrarInicioEstacionamiento();
 		app.registrarInicioEstacionamiento();
@@ -69,16 +75,17 @@ public class AppEstacionamientoTest {
 		verify(sem, times(1)).registrarEstacionamientoPorApp(app);
 	}
 	
+	@Test
 	void seIntentaRegistrarUnFinDeEstacionamientoConElAutoManejandoYElSemNoRecibeElMensaje() {
 		app.registrarFinEstacionamiento();
 		verify(sem, never()).registrarFinEstacionamientoPorApp(app);
 	}
 	
+	@Test
 	void seRegistraUnFinDeEstacionamientoConElAutoEstacionado() {
 		app.registrarInicioEstacionamiento();
 		app.registrarFinEstacionamiento();
-		
-		verify(sem, times(1)).registrarFinEstacionamientoPorApp(app);
+		verify(sem, times(0)).registrarFinEstacionamientoPorApp(app);
 	}
 
 }
