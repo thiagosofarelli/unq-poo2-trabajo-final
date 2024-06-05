@@ -18,4 +18,20 @@ public abstract class RegistroDeCompra {
 			this.fecha 		  = fecha;
 			this.hora 		  = hora;
 		}
+
+		public int getNroControl() {
+			return nroControl;
+		}
+
+		public PuntoDeVenta getPuntoDeVenta() {
+			return puntoDeVenta;
+		}
+
+		public LocalDate getFecha() {
+			return fecha;
+		}
+
+		public LocalTime getHora() {
+			return hora;
+		}
 }
