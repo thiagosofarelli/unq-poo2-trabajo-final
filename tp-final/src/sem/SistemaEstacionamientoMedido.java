@@ -85,7 +85,7 @@ public class SistemaEstacionamientoMedido implements ObserverEstacionamiento{
 	public void registrarCompraPuntual(PuntoDeVenta puntoDeVenta, String patente, int cantidadHoras, int nroControl) {
 		LocalDate fechaActual = LocalDate.now();
 		LocalTime horaActual  = LocalTime.now();
-		RegistroPorCompraPuntual reg  = new RegistroPorCompraPuntual(nroControl, puntoDeVenta, fechaActual, horaActual, cantidadHoras, patente);
+		RegistroDeCompra reg  = new RegistroPorCompraPuntual(nroControl, puntoDeVenta, fechaActual, horaActual, cantidadHoras, patente);
 		this.registrosDeCompra.add(reg);
 		this.gestorEstacionamientos.registrarEstacionamientoPuntual(patente, horaActual, cantidadHoras, reg);
 	}

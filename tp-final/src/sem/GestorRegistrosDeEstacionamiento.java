@@ -21,7 +21,7 @@ public class GestorRegistrosDeEstacionamiento {
 		this.sem = sem;
 	}
 	
-	public void registrarEstacionamientoPuntual(String patente, LocalTime horaActual, int cantidadHoras, RegistroPorCompraPuntual reg) {
+	public void registrarEstacionamientoPuntual(String patente, LocalTime horaActual, int cantidadHoras, RegistroDeCompra reg) {
 		LocalTime horaFin = horaActual.plusHours(cantidadHoras);
 		EstacionamientoPuntual registro = new EstacionamientoPuntual(patente, horaActual, horaFin, reg);
 		this.registrosDeEstacionamiento.put(patente, registro);
