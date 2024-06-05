@@ -6,6 +6,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -88,4 +89,14 @@ public class AppEstacionamientoTest {
 		verify(sem, times(1)).registrarFinEstacionamientoPorApp(app);
 	}
 
+	@Test
+	void testGetterNumero() {
+		assertEquals(12345678, this.app.getNumero());
+	}
+	
+	@Test
+	void testGetterCredito() {
+		when(this.sem.getCredito(12345678)).thenReturn(19.89f);
+		assertEquals(19.89f, this.app.getCredito());
+	}
 }

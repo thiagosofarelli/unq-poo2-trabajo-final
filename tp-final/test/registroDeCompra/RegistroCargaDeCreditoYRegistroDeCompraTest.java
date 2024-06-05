@@ -39,7 +39,7 @@ class RegistroCargaDeCreditoYRegistroDeCompraTest {
 	
 	@Test
 	void testGetterHora() {
-		assertEquals(LocalTime.now(), this.registro.getHora());
+		assertEquals(LocalTime.now(), this.registro.getHoraRegistro());
 	}
 	
 	@Test

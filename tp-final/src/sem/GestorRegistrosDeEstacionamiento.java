@@ -10,7 +10,6 @@ import estacionamiento.Estacionamiento;
 import estacionamiento.EstacionamientoPorApp;
 import estacionamiento.EstacionamientoPuntual;
 import registroDeCompra.RegistroDeCompra;
-import registroDeCompra.RegistroPorCompraPuntual;
 
 public class GestorRegistrosDeEstacionamiento {
 	private Map<String, Estacionamiento> registrosDeEstacionamiento= new HashMap<>();
@@ -79,4 +78,5 @@ public class GestorRegistrosDeEstacionamiento {
 	public  Map<Integer, String> getRegistrosDePatentePorCelular() {
 		return this.registroDePatentePorCelular;
 	}
+	
 }
