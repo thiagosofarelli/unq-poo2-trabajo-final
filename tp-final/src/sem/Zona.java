@@ -7,4 +7,8 @@ public class Zona {
 	public Zona(Inspector inspector) {
 		this.inspector = inspector;
 	}	
+	
+	public Inspector getInspector() {
+		return this.inspector;
+	}
 }
