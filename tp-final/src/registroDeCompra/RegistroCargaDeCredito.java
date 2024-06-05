@@ -17,11 +17,11 @@ public class RegistroCargaDeCredito extends RegistroDeCompra {
 	}
 
 	public int getNumero() {
-		return numero;
+		return this.numero;
 	}
 
 	public float getMonto() {
-		return monto;
+		return this.monto;
 	}
 }
 

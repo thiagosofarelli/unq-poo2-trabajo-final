@@ -23,10 +23,22 @@ public class RegistroDeInfraccion {
 	}
 
 	public LocalDate getFecha() {
-		return fecha;
+		return this.fecha;
 	}
 
 	public LocalTime getHora() {
-		return hora;
+		return this.hora;
+	}
+
+	public Zona getZona() {
+		return this.zona;
+	}
+
+	public Inspector getInspector() {
+		return this.inspector;
+	}
+
+	public String getPatente() {
+		return this.patente;
 	}
 }

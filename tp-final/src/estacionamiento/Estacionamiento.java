@@ -12,6 +12,10 @@ public abstract class Estacionamiento {
 		this.horaDeInicio = horaIn;
 		this.horaDeFin 	  = horaFin;
 	}
+
+	public String getPatente() {
+		return this.patente;
+	}
 	
 	public LocalTime getHoraDeInicio() {
 		return this.horaDeInicio;
@@ -24,7 +28,7 @@ public abstract class Estacionamiento {
 	public void setHoraDeFin(LocalTime horaFin) {
 		this.horaDeFin = horaFin;
 	}
-		
+	
 	public abstract boolean estaVigente();
 	
 }

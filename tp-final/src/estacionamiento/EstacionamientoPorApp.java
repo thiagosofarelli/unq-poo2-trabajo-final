@@ -11,6 +11,10 @@ public class EstacionamientoPorApp extends Estacionamiento {
 		this.celular 	= celular;
 		this.horaMaxima = horaMax;
 	}
+
+	public int getCelular() {
+		return this.celular;
+	}
 	
 	@Override
 	public boolean estaVigente() {

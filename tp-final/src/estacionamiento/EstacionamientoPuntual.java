@@ -12,6 +12,10 @@ public class EstacionamientoPuntual extends Estacionamiento {
 		super(patente, horaIn, horaFin);
 		this.compra = compra;
 	}
+
+	public RegistroDeCompra getCompra() {
+		return this.compra;
+	}
 	
 	@Override
 	public boolean estaVigente() {

@@ -5,16 +5,12 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalTime;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import app.AppEstacionamiento;
-import estacionamiento.Estacionamiento;
 import registroDeCompra.RegistroPorCompraPuntual;
-import sem.GestorRegistrosDeEstacionamiento;
 
 class GestorRegistrosDeEstacionamientoTest {
 
@@ -52,7 +48,7 @@ class GestorRegistrosDeEstacionamientoTest {
         when(app.getNumero()).thenReturn(1168889995); //Asigno un numero de telefono
         gestor.registrarEstacionamientoPorApp(app);
         gestor.registrarFinDeEstacionamientoPorApp(app);
-        assertFalse(gestor.getRegistrosDePatentePorCelular().containsKey("1168889995"));
+        assertFalse(gestor.getRegistrosDePatentePorCelular().containsKey(1168889995));
 	}
 	
 	@Test
@@ -70,14 +66,10 @@ class GestorRegistrosDeEstacionamientoTest {
 	 @Test
 	 void testGetterRegistrosDeEstacionamiento() {
 		 assertEquals(0, gestor.getRegistrosDeEstacionamiento().size());
-	    }
+	 }
 	 
 	 @Test
 	 void testGetterRegistrosDePatentePorCelular() throws Exception {
 	     assertEquals(0, gestor.getRegistrosDePatentePorCelular().size());
-	    }
-	
-	
-	
-	
-	}
+	 }
+}

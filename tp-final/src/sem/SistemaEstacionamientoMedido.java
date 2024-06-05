@@ -48,12 +48,20 @@ public class SistemaEstacionamientoMedido implements ObserverEstacionamiento{
 		return this.precioPorHora;
 	}
 	
-	public LocalTime getHoraFin() {
-		return this.horaFin;
-	}
-	
 	public float getCredito(int numero) {
 		return this.creditos.get(numero);
+	}
+
+	public List<Zona> getZonas() {
+		return this.zonas;
+	}
+	
+	public LocalTime getHoraInicio() {
+		return this.horaInicio;
+	}
+	
+	public LocalTime getHoraFin() {
+		return this.horaFin;
 	}
 	
 	

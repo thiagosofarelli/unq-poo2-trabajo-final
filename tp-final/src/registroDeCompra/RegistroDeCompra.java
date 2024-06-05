@@ -20,18 +20,18 @@ public abstract class RegistroDeCompra {
 		}
 
 		public int getNroControl() {
-			return nroControl;
+			return this.nroControl;
 		}
 
 		public PuntoDeVenta getPuntoDeVenta() {
-			return puntoDeVenta;
+			return this.puntoDeVenta;
 		}
 
 		public LocalDate getFecha() {
-			return fecha;
+			return this.fecha;
 		}
 
-		public LocalTime getHora() {
-			return hora;
+		public LocalTime getHoraRegistro() {
+			return this.hora;
 		}
 }
