@@ -21,9 +21,9 @@ public class GestorRegistrosDeEstacionamiento {
 		this.sem = sem;
 	}
 	
-	public void registrarEstacionamientoPuntual(String patente, LocalTime horaActual, int cantidadHoras, RegistroDeCompra registroCompra) {
+	public void registrarEstacionamientoPuntual(String patente, LocalTime horaActual, int cantidadHoras, RegistroPorCompraPuntual reg) {
 		LocalTime horaFin = horaActual.plusHours(cantidadHoras);
-		EstacionamientoPuntual registro = new EstacionamientoPuntual(patente, horaActual, horaFin, registroCompra);
+		EstacionamientoPuntual registro = new EstacionamientoPuntual(patente, horaActual, horaFin, reg);
 		this.registrosDeEstacionamiento.put(patente, registro);
 	}
 
@@ -71,4 +71,9 @@ public class GestorRegistrosDeEstacionamiento {
 	public boolean poseeEstacionamientoVigente(String patente) {
 		return this.registrosDeEstacionamiento.containsKey(patente) && this.registrosDeEstacionamiento.get(patente).estaVigente();
 	}
+	
+	public Map<String, Estacionamiento> getRegistrosDeEstacionamiento(){
+		return this.registrosDeEstacionamiento;
+	}
+	
 }
