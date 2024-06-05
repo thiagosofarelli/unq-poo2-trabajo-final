@@ -85,7 +85,7 @@ public class AppEstacionamientoTest {
 	void seRegistraUnFinDeEstacionamientoConElAutoEstacionado() {
 		app.registrarInicioEstacionamiento();
 		app.registrarFinEstacionamiento();
-		verify(sem, times(0)).registrarFinEstacionamientoPorApp(app);
+		verify(sem, times(1)).registrarFinEstacionamientoPorApp(app);
 	}
 
 }

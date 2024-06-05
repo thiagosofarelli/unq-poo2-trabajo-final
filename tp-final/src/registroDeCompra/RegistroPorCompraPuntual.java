@@ -15,4 +15,12 @@ public class RegistroPorCompraPuntual extends RegistroDeCompra {
 		this.cantidadDeHorasCompradas = cantidadDeHorasCompradas;
 		this.patente 				  = patente;
 	}
+
+	public int getCantidadDeHorasCompradas() {
+		return cantidadDeHorasCompradas;
+	}
+
+	public String getPatente() {
+		return patente;
+	}
 }

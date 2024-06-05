@@ -51,7 +51,7 @@ public class GestorRegistrosDeEstacionamiento {
 		}
 	}
 	
-	public void registrarFinDeEstacionamientoPorApp( AppEstacionamiento app) {
+	public void registrarFinDeEstacionamientoPorApp(AppEstacionamiento app) {
 		int numero = app.getNumero()
 ;		String patente = this.registroDePatentePorCelular.get(numero);
 		
