@@ -53,7 +53,7 @@ public class AppEstacionamiento extends App implements MovementSensor {
 	}
 	
 	public float getCredito() {
-		return this.getSEM().getCredito(numero);
+		return this.getSEM().getCredito(this.numero);
 	}
 
 	public Estado getEstado() {
