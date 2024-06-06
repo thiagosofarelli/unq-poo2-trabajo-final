@@ -3,6 +3,7 @@ package estacionamiento;
 import java.time.LocalTime;
 
 import registroDeCompra.RegistroDeCompra;
+import sem.SistemaEstacionamientoMedido;
 
 public class EstacionamientoPuntual extends Estacionamiento {
 	
@@ -18,8 +19,8 @@ public class EstacionamientoPuntual extends Estacionamiento {
 	}
 	
 	@Override
-	public boolean estaVigente() {
+	public boolean estaVigente(SistemaEstacionamientoMedido sem) {
 		LocalTime horaActual = LocalTime.now();
-		return horaActual.isBefore(this.getHoraDeFin());
+		return horaActual.isAfter(sem.getHoraFin()) || horaActual.isBefore(this.getHoraDeFin());
 	}
 }

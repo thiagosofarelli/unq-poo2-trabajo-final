@@ -2,6 +2,8 @@ package estacionamiento;
 
 import java.time.LocalTime;
 
+import sem.SistemaEstacionamientoMedido;
+
 public abstract class Estacionamiento {
 	private String patente;
 	private LocalTime horaDeInicio;
@@ -29,6 +31,8 @@ public abstract class Estacionamiento {
 		this.horaDeFin = horaFin;
 	}
 	
-	public abstract boolean estaVigente();
+	public abstract boolean estaVigente(SistemaEstacionamientoMedido sem);
+	
+	public void finalizar(SistemaEstacionamientoMedido sem) {}
 	
 }

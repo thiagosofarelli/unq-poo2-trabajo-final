@@ -99,4 +99,6 @@ public class AppEstacionamientoTest {
 		when(this.sem.getCredito(12345678)).thenReturn(19.89f);
 		assertEquals(19.89f, this.app.getCredito());
 	}
+	
+	
 }
