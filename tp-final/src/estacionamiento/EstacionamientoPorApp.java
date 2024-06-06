@@ -1,6 +1,9 @@
 package estacionamiento;
 
+import java.time.Duration;
 import java.time.LocalTime;
+
+import sem.SistemaEstacionamientoMedido;
 
 public class EstacionamientoPorApp extends Estacionamiento {
 	private int celular;
@@ -17,8 +20,14 @@ public class EstacionamientoPorApp extends Estacionamiento {
 	}
 	
 	@Override
-	public boolean estaVigente() {
+	public boolean estaVigente(SistemaEstacionamientoMedido sem) {
 		LocalTime horaActual = LocalTime.now();
-		return this.getHoraDeFin() == null && horaActual.isBefore(this.horaMaxima);
+		return horaActual.isAfter(sem.getHoraFin()) ||  this.getHoraDeFin() == null && horaActual.isBefore(this.horaMaxima);
+	}
+	
+	@Override
+	public void finalizar(SistemaEstacionamientoMedido sem) {
+		LocalTime horaActual = LocalTime.now();
+		this.setHoraDeFin(horaActual);
 	}
 }

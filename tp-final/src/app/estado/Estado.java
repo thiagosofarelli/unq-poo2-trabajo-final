@@ -2,7 +2,7 @@ package app.estado;
 
 import app.AppEstacionamiento;
 
-public class Estado {
+public abstract class Estado {
 		
 	public void driving(AppEstacionamiento app) {};
 	

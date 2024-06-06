@@ -145,5 +145,9 @@ public class SistemaEstacionamientoMedido implements ObserverEstacionamiento{
 	public void notificarRecargaDeCredito(RegistroCargaDeCredito registro) {
 		this.entidades.stream().forEach(entidad -> entidad.actualizarRecargaDeCredito(this, registro));
 	}
+	
+	public void finalizarEstacionamientosPorFinDeFranjaHoraria() {
+		this.gestorEstacionamientos.finalizarEstacionamientosPorFinDeFranjaHoraria();
+	}
 		
 }
