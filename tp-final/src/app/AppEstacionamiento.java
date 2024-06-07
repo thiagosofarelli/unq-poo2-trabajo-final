@@ -11,16 +11,17 @@ import app.modo.ModoApp;
 import app.sensor.MovementSensor;
 import sem.SistemaEstacionamientoMedido;
 
-public class AppEstacionamiento extends App implements MovementSensor {
+public class AppEstacionamiento implements MovementSensor {
 	
 	private AsistenciaAlUsuario asistencia;
 	private int numero;
 	private String patente;
 	private ModoApp modo;
 	private Estado estado;
+	private SistemaEstacionamientoMedido sem;
 	
 	public AppEstacionamiento(int numero, String patente, SistemaEstacionamientoMedido sem) {
-		super(sem);
+		this.sem = sem;
 		this.asistencia = new Desactivada();
 		this.numero 	= numero;
 		this.patente	= patente;
@@ -64,6 +65,9 @@ public class AppEstacionamiento extends App implements MovementSensor {
 		return this.asistencia;
 	}
 	
+	public SistemaEstacionamientoMedido getSEM() {
+		return this.sem;
+	}
 	
 	//ASISTENCIA
 	public void activarAsistencia() {
