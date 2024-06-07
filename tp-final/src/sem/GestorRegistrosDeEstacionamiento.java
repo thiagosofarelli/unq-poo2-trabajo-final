@@ -88,5 +88,9 @@ public class GestorRegistrosDeEstacionamiento {
 		}); 
 		this.registrosDeEstacionamientoDelDia.clear();
 	}
+
+	public Map<String, Estacionamiento> getRegistrosDeEstacionamientoDelDia() {
+		return this.registrosDeEstacionamientoDelDia;
+	}
 	
 }
