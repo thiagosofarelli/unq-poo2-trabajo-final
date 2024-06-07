@@ -100,7 +100,9 @@ public class AppEstacionamiento implements MovementSensor {
 	
 
 	//NOTIFICACION
-	public void recibirNotificacion(String notificacion) {}
+	public void recibirNotificacion(String notificacion) {
+		System.out.println(notificacion);
+	}
 	
 	
 	//OVERRIDE

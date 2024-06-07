@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import app.asistencia.Activada;
 import app.asistencia.Desactivada;
 import app.estado.Estacionado;
+import app.estado.Estado;
 import app.modo.Automatico;
 import app.modo.Manual;
 import sem.SistemaEstacionamientoMedido;
@@ -99,6 +100,23 @@ public class AppEstacionamientoTest {
 		when(this.sem.getCredito(12345678)).thenReturn(19.89f);
 		assertEquals(19.89f, this.app.getCredito());
 	}
+	
+	@Test 
+    void laAppRecibeElMensajeDriving() {
+        Estado manejando = mock(Estado.class);
+        app.setEstado(manejando);
+        app.driving();
+        verify(manejando).driving(app);
+    }
+	
+	@Test 
+    void laAppRecibeElMensajeWalking() {
+        Estado estacionado = mock(Estado.class);
+        app.setEstado(estacionado);
+        app.walking();
+        verify(estacionado).walking(app);
+    }
+	
 	
 	
 }
