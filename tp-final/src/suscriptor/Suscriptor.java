@@ -1,11 +1,11 @@
-package entidad;
+package suscriptor;
 
 import estacionamiento.Estacionamiento;
 import observer.ObserverEstacionamiento;
 import registroDeCompra.RegistroCargaDeCredito;
 import sem.SistemaEstacionamientoMedido;
 
-public interface Entidad {
+public interface Suscriptor {
 	
 	public void suscribirme(ObserverEstacionamiento obs);
 

@@ -1,10 +1,12 @@
 package sem;
 
 import registroDeCompra.RegistroCargaDeCredito;
-import entidad.Entidad;
 import registroDeCompra.RegistroDeCompra;
 import registroDeCompra.RegistroPorCompraPuntual;
 import registroDeInfraccion.RegistroDeInfraccion;
+import suscriptor.Suscriptor;
+
+import static org.mockito.ArgumentMatchers.isNotNull;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -20,7 +22,7 @@ import observer.ObserverEstacionamiento;
 public class SistemaEstacionamientoMedido implements ObserverEstacionamiento{
 	
 	private List<Zona> zonas;
-	private List<Entidad> entidades;
+	private List<Suscriptor> suscriptores;
 	private int precioPorHora;
 	private LocalTime horaInicio;
 	private LocalTime horaFin;
@@ -39,7 +41,7 @@ public class SistemaEstacionamientoMedido implements ObserverEstacionamiento{
 		this.registrosDeInfraccion 		= new ArrayList<RegistroDeInfraccion>();
 		this.gestorEstacionamientos     = gestorEstacionamientos;
 		this.creditos 					= new HashMap<Integer, Float>();
-		this.entidades					= new ArrayList<Entidad>();
+		this.suscriptores				= new ArrayList<Suscriptor>();
 	}
 	
 	
@@ -50,6 +52,18 @@ public class SistemaEstacionamientoMedido implements ObserverEstacionamiento{
 	
 	public float getCredito(int numero) {
 		return this.creditos.get(numero);
+	}
+	
+	public List<RegistroDeCompra> getRegistrosDeCompra(){
+		return this.registrosDeCompra;
+	}
+	
+	public List<RegistroDeInfraccion> getInfracciones(){
+		return this.registrosDeInfraccion;
+	}
+	
+	public List<Suscriptor> getSuscriptores(){
+		return this.suscriptores;
 	}
 
 	public List<Zona> getZonas() {
@@ -83,9 +97,13 @@ public class SistemaEstacionamientoMedido implements ObserverEstacionamiento{
 		}
 	}
 	
-	public void debitarCredito(float credito, int numero) {
-		float creditoActual = this.creditos.get(numero);
-		this.creditos.put(numero, creditoActual - credito);
+	public void debitarCredito(float credito, int numero) throws Exception {
+		Float creditoActual = this.creditos.get(numero);
+		if (creditoActual != null) {	
+			this.creditos.put(numero, creditoActual - credito);
+		} else {
+			throw new Exception("El número no está registrado");
+		}
 	}
 
 	
@@ -122,28 +140,28 @@ public class SistemaEstacionamientoMedido implements ObserverEstacionamiento{
 	
 	//OVERRIDES
 	@Override
-	public void suscribir(Entidad entidad) {
-		this.entidades.add(entidad);
+	public void suscribir(Suscriptor entidad) {
+		this.suscriptores.add(entidad);
 	}
 
 	@Override
-	public void desuscribir(Entidad entidad) {
-		this.entidades.remove(entidad);
+	public void desuscribir(Suscriptor entidad) {
+		this.suscriptores.remove(entidad);
 	}
 
 	@Override
 	public void notificarInicioEstacionamiento(Estacionamiento estacionamiento) {
-		this.entidades.stream().forEach(entidad -> entidad.actualizarInicioEstacionamiento(this, estacionamiento));
+		this.suscriptores.stream().forEach(entidad -> entidad.actualizarInicioEstacionamiento(this, estacionamiento));
 	}
 
 	@Override
 	public void notificarFinEstacionamiento(Estacionamiento estacionamiento) {
-		this.entidades.stream().forEach(entidad -> entidad.actualizarFinEstacionamiento(this, estacionamiento));
+		this.suscriptores.stream().forEach(entidad -> entidad.actualizarFinEstacionamiento(this, estacionamiento));
 	}
 
 	@Override
 	public void notificarRecargaDeCredito(RegistroCargaDeCredito registro) {
-		this.entidades.stream().forEach(entidad -> entidad.actualizarRecargaDeCredito(this, registro));
+		this.suscriptores.stream().forEach(entidad -> entidad.actualizarRecargaDeCredito(this, registro));
 	}
 	
 	public void finalizarEstacionamientosPorFinDeFranjaHoraria() {

@@ -54,6 +54,7 @@ public class GestorRegistrosDeEstacionamiento {
 	}
 	
 	public void registrarFinDeEstacionamientoPorApp(AppEstacionamiento app) {
+		try {
 		int numero = app.getNumero();
 		String patente = this.registroDePatentePorCelular.get(numero);
 		if (patente != null) {
@@ -62,10 +63,13 @@ public class GestorRegistrosDeEstacionamiento {
 			registro.finalizar(this.sem);
 			long duracion = Duration.between(registro.getHoraDeInicio(), horaActual).toHours();
 			float costo = duracion * sem.getPrecioPorHora();
-			sem.debitarCredito(costo, numero);
+				sem.debitarCredito(costo, numero);
+			
 			this.registroDePatentePorCelular.remove(numero);
 			app.recibirNotificacion("Se ha registrado un fin de estacionamiento a las " + horaActual.toString() + " horas. El mismo fue iniciado a las " +
-					registro.getHoraDeInicio() + " y tuvo una duración de " + duracion + ". El costo fue de " + costo);
+					registro.getHoraDeInicio() + " y tuvo una duración de " + duracion + ". El costo fue de " + costo);}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
