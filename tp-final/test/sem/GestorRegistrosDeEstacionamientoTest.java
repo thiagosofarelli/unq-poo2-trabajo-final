@@ -90,7 +90,7 @@ class GestorRegistrosDeEstacionamientoTest {
 	}
 	
 	@Test
-	void ElGestorDeterminaQueUnaPatenteTieneEstacionamientoVigente() throws Exception {
+	void ElGestorDeterminaQueUnaPatenteTieneEstacionamientoVigenteDependiendoLaHoraDeFin() throws Exception {
 		AppEstacionamiento app = mock(AppEstacionamiento.class);
         when(sem.getPrecioPorHora()).thenReturn(50);
         when(sem.getHoraFin()).thenReturn(LocalTime.of(20, 0));
@@ -98,7 +98,11 @@ class GestorRegistrosDeEstacionamientoTest {
         when(sem.getCredito(1121334532)).thenReturn(90.0f); //Le asigno saldo a ese numero
         when(app.getPatente()).thenReturn("AAA222"); //Le asigno una patente
         gestor.registrarEstacionamientoPorApp(app);
+        if (LocalTime.now().isBefore(sem.getHoraFin())) {
         assertTrue(gestor.poseeEstacionamientoVigente(app.getPatente()));
+        } else {
+            assertFalse(gestor.poseeEstacionamientoVigente(app.getPatente()));
+        }
 	}
 	
 	@Test

@@ -21,6 +21,6 @@ public class EstacionamientoPuntual extends Estacionamiento {
 	@Override
 	public boolean estaVigente(SistemaEstacionamientoMedido sem) {
 		LocalTime horaActual = LocalTime.now();
-		return horaActual.isAfter(sem.getHoraFin()) || horaActual.isBefore(this.getHoraDeFin());
+		return horaActual.isBefore(this.getHoraDeFin());
 	}
 }

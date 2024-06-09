@@ -22,7 +22,7 @@ public class EstacionamientoPorApp extends Estacionamiento {
 	@Override
 	public boolean estaVigente(SistemaEstacionamientoMedido sem) {
 		LocalTime horaActual = LocalTime.now();
-		return horaActual.isAfter(sem.getHoraFin()) ||  this.getHoraDeFin() == null && horaActual.isBefore(this.horaMaxima);
+		return this.getHoraDeFin() == null && horaActual.isBefore(this.horaMaxima);
 	}
 	
 	@Override
