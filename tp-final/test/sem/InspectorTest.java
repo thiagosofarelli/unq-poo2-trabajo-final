@@ -1,9 +1,7 @@
 package sem;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -42,5 +40,4 @@ class InspectorTest {
 		inspector.generarInfraccion(patente);
 		verify(sem).generarInfraccion(patente, inspector);
 	}
-	
 }

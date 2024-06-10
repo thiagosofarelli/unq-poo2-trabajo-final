@@ -2,11 +2,7 @@ package app;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,6 +16,7 @@ import app.modo.Manual;
 import sem.SistemaEstacionamientoMedido;
 
 public class AppEstacionamientoTest {
+	
 	private SistemaEstacionamientoMedido sem;
 	private AppEstacionamiento app;
 	
@@ -116,7 +113,4 @@ public class AppEstacionamientoTest {
         app.walking();
         verify(estacionado).walking(app);
     }
-	
-	
-	
 }

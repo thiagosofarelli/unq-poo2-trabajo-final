@@ -1,9 +1,7 @@
 package sem;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import java.time.LocalTime;
 
@@ -12,7 +10,6 @@ import org.junit.jupiter.api.Test;
 
 import app.AppEstacionamiento;
 import estacionamiento.Estacionamiento;
-import estacionamiento.EstacionamientoPorApp;
 import registroDeCompra.RegistroPorCompraPuntual;
 
 class GestorRegistrosDeEstacionamientoTest {
@@ -35,7 +32,7 @@ class GestorRegistrosDeEstacionamientoTest {
 	
 	@Test
     void ElGestorRegistraUnNuevoEstacionamientoPorApp() throws Exception {
-        AppEstacionamiento app = mock(AppEstacionamiento.class);
+    	AppEstacionamiento app = mock(AppEstacionamiento.class);
         when(sem.getPrecioPorHora()).thenReturn(50);
         when(sem.getHoraFin()).thenReturn(LocalTime.of(20, 0));
         when(app.getNumero()).thenReturn(1121334532); //Asigno un numero de telefono
