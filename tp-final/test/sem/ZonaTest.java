@@ -21,5 +21,4 @@ class ZonaTest {
 	void testGetterDelInspectorDeLaZona() {
 		assertEquals(zona.getInspector(), inspector);
 	}
-
 }
