@@ -21,7 +21,7 @@ public class AppEstacionamiento implements MovementSensor {
 	private SistemaEstacionamientoMedido sem;
 	
 	public AppEstacionamiento(int numero, String patente, SistemaEstacionamientoMedido sem) {
-		this.sem = sem;
+		this.sem 	    = sem;
 		this.asistencia = new Desactivada();
 		this.numero 	= numero;
 		this.patente	= patente;

@@ -1,6 +1,5 @@
 package estacionamiento;
 
-import java.time.Duration;
 import java.time.LocalTime;
 
 import sem.SistemaEstacionamientoMedido;

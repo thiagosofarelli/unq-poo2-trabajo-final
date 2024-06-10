@@ -6,8 +6,6 @@ import registroDeCompra.RegistroPorCompraPuntual;
 import registroDeInfraccion.RegistroDeInfraccion;
 import suscriptor.Suscriptor;
 
-import static org.mockito.ArgumentMatchers.isNotNull;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
