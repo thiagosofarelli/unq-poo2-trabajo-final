@@ -96,7 +96,7 @@ class GestorRegistrosDeEstacionamientoTest {
         when(app.getPatente()).thenReturn("AAA222"); //Le asigno una patente
         gestor.registrarEstacionamientoPorApp(app);
         if (LocalTime.now().isBefore(sem.getHoraFin())) {
-        assertTrue(gestor.poseeEstacionamientoVigente(app.getPatente()));
+        	assertTrue(gestor.poseeEstacionamientoVigente(app.getPatente()));
         } else {
             assertFalse(gestor.poseeEstacionamientoVigente(app.getPatente()));
         }

@@ -2,6 +2,8 @@ package estacionamiento;
 
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 import java.time.LocalTime;
@@ -34,7 +36,11 @@ public class EstacionamientoPorAppTest {
 	@Test
 	void estacionamientoVigente() {
 		when(sem.getHoraFin()).thenReturn(LocalTime.of(20, 0));
-		assertTrue(estacionamiento.estaVigente(sem));
+		if (LocalTime.now().isBefore(sem.getHoraFin())) {
+			assertTrue(estacionamiento.estaVigente(sem));
+        } else {
+            assertFalse(estacionamiento.estaVigente(sem));
+        }
 	}
 	
 	@Test

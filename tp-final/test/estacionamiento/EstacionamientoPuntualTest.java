@@ -32,7 +32,11 @@ public class EstacionamientoPuntualTest {
 	@Test
 	void testEstacionamientoVigente() {
 		when(sem.getHoraFin()).thenReturn(LocalTime.of(20, 0));
-		assertTrue(estacionamiento.estaVigente(sem));
+		if (LocalTime.now().isBefore(sem.getHoraFin())) {
+			assertTrue(estacionamiento.estaVigente(sem));
+		} else {
+			assertFalse(estacionamiento.estaVigente(sem));
+		}
 	}
 	
 	@Test
