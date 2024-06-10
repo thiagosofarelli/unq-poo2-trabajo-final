@@ -9,6 +9,7 @@ public class Manejando extends Estado {
 		app.getAsistencia().walking(app);
 	}
 	
+	@Override
 	public void registrarInicioEstacionamiento(AppEstacionamiento app) {
 		app.setEstado(new Estacionado());
 		app.getSEM().registrarEstacionamientoPorApp(app);
