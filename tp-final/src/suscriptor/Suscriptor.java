@@ -3,6 +3,7 @@ package suscriptor;
 import estacionamiento.Estacionamiento;
 import observer.ObserverEstacionamiento;
 import registroDeCompra.RegistroCargaDeCredito;
+import registroDeCompra.RegistroDeCompra;
 import sem.SistemaEstacionamientoMedido;
 
 public interface Suscriptor {
@@ -15,6 +16,6 @@ public interface Suscriptor {
 
 	public void actualizarFinEstacionamiento(SistemaEstacionamientoMedido sem, Estacionamiento finalizacionDeEstacionamiento);
 
-	public void actualizarRecargaDeCredito(SistemaEstacionamientoMedido sem, RegistroCargaDeCredito cargaDeCredito);
+	public void actualizarRecargaDeCredito(SistemaEstacionamientoMedido sem, RegistroDeCompra cargaDeCredito);
 	
 }
