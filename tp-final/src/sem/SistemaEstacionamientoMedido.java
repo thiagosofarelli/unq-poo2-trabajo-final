@@ -84,6 +84,7 @@ public class SistemaEstacionamientoMedido implements ObserverEstacionamiento{
 		RegistroDeCompra reg 	= new RegistroCargaDeCredito(nroControl, puntoDeVenta, fechaActual, horaActual, numero, monto);
 		this.registrosDeCompra.add(reg);
 		cargarCredito(numero, monto);
+		this.notificarRecargaDeCredito(reg);
 	}
 	
 	private void cargarCredito(int numero, float monto) {
@@ -158,7 +159,7 @@ public class SistemaEstacionamientoMedido implements ObserverEstacionamiento{
 	}
 
 	@Override
-	public void notificarRecargaDeCredito(RegistroCargaDeCredito registro) {
+	public void notificarRecargaDeCredito(RegistroDeCompra registro) {
 		this.suscriptores.stream().forEach(entidad -> entidad.actualizarRecargaDeCredito(this, registro));
 	}
 	

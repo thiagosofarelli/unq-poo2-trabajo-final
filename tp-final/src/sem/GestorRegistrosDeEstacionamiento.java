@@ -27,6 +27,7 @@ public class GestorRegistrosDeEstacionamiento {
 		LocalTime horaFin = horaActual.plusHours(cantidadHoras);
 		EstacionamientoPuntual registro = new EstacionamientoPuntual(patente, horaActual, horaFin, reg);
 		this.registrosDeEstacionamientoDelDia.put(patente, registro);
+		this.sem.notificarInicioEstacionamiento(registro);
 	}
 
 	public void registrarEstacionamientoPorApp( AppEstacionamiento app ) throws Exception {
@@ -47,6 +48,7 @@ public class GestorRegistrosDeEstacionamiento {
 				this.registroDePatentePorCelular.put(numero, patente);
 				app.recibirNotificacion("Se ha registrado un inicio de estacionamiento a las " + horaActual.toString() + ". La hora máxima  de fin de su estacionamiento es "
 						+ horaMax.toString());
+				this.sem.notificarInicioEstacionamiento(registro);
 			} else {
 				app.recibirNotificacion("No tiene saldo suficiente para la compra");
 			}
@@ -67,7 +69,9 @@ public class GestorRegistrosDeEstacionamiento {
 			
 			this.registroDePatentePorCelular.remove(numero);
 			app.recibirNotificacion("Se ha registrado un fin de estacionamiento a las " + horaActual.toString() + " horas. El mismo fue iniciado a las " +
-					registro.getHoraDeInicio() + " y tuvo una duración de " + duracion + ". El costo fue de " + costo);}
+					registro.getHoraDeInicio() + " y tuvo una duración de " + duracion + ". El costo fue de " + costo);
+			this.sem.notificarFinEstacionamiento(registro);
+		}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

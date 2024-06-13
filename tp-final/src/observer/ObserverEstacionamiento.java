@@ -2,6 +2,7 @@ package observer;
 
 import estacionamiento.Estacionamiento;
 import registroDeCompra.RegistroCargaDeCredito;
+import registroDeCompra.RegistroDeCompra;
 import suscriptor.Suscriptor;
 
 public interface ObserverEstacionamiento {
@@ -14,5 +15,5 @@ public interface ObserverEstacionamiento {
 
 	public void notificarFinEstacionamiento(Estacionamiento estacionamiento);
 
-	public void notificarRecargaDeCredito(RegistroCargaDeCredito registroCargaDeCredito);
+	public void notificarRecargaDeCredito(RegistroDeCompra registroCargaDeCredito);
 }
