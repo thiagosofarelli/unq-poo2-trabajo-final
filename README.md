@@ -1,6 +1,6 @@
-Trabajo final de la materia "Programación con Objetos II".
+# Trabajo final de la materia "Programación con Objetos II".
 
-# Integrantes:
+## Integrantes:
 
 Cardozo, Lara Noelí
 
